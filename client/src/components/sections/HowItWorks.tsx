@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Heart, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const HowItWorks = () => {
