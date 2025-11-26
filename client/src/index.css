@@ -22,6 +22,9 @@
 
   --animate-fade-in: fadeIn 0.5s ease-out;
   --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-float-delayed: float 3s ease-in-out 1.5s infinite;
+  --animate-draw: draw 1.5s ease-out forwards;
 
   @keyframes fadeIn {
     0% { opacity: 0; }
@@ -30,6 +33,14 @@
   @keyframes slideUp {
     0% { transform: translateY(20px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes draw {
+    0% { stroke-dasharray: 0 1000; opacity: 0; }
+    100% { stroke-dasharray: 1000 1000; opacity: 1; }
   }
 }
 
