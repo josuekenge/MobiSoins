@@ -7,6 +7,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        {/* Catch-all route for SPA - redirects to home */}
+        <Route path="*" element={<LandingPage />} />
       </Routes>
     </Router>
   );
