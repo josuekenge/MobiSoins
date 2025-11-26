@@ -47,7 +47,7 @@ export const FAQ = () => {
   );
 
   return (
-    <section id="faq" className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section id="faq" className="py-20 bg-white relative overflow-hidden">
       {/* Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[10%] right-0 w-[50%] h-[50%] bg-blue-100/30 rounded-full blur-3xl opacity-50"></div>

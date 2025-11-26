@@ -64,7 +64,7 @@ export const Trust = () => {
   };
 
   return (
-    <section id="trust" className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section id="trust" className="py-24 bg-white relative overflow-hidden">
       {/* Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-[10%] right-[10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-3xl opacity-50"></div>

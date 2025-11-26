@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Star, Clock, MapPin, CheckCircle, Activity, Download, ArrowRight, User, Mail, Search, ChevronDown } from 'lucide-react';
+import { Star, Clock, MapPin, CheckCircle, Activity, Calendar, FileText, User, Mail, Search, ChevronDown } from 'lucide-react';
 
 export const Hero = () => {
   const partners = [
@@ -71,20 +71,24 @@ export const Hero = () => {
           transition={{ delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <button 
-            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+          <a 
+            href="https://calendly.com/mobisoins-info/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2"
           >
-            <Download className="w-5 h-5" />
-            Télécharger l'App
-          </button>
-          <button 
-             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+            <Calendar className="w-5 h-5" />
+            Réserver Maintenant
+          </a>
+          <a 
+             href="/Healthcare_Access_On_Demand.pdf#zoom=40"
+             target="_blank"
+             rel="noopener noreferrer"
              className="px-8 py-4 bg-white border-2 border-navy-100 text-navy-800 font-bold rounded-2xl hover:border-navy-300 hover:shadow-lg transition-all flex items-center gap-2"
           >
-            Devenir Partenaire
-            <ArrowRight className="w-5 h-5" />
-          </button>
+            <FileText className="w-5 h-5" />
+            Pitch Deck
+          </a>
         </motion.div>
       </div>
 

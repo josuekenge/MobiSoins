@@ -22,7 +22,6 @@ export const Header = () => {
     { name: 'Comment ça marche', href: '#how-it-works' },
     { name: 'Fonctionnalités', href: '#features' },
     { name: 'Services', href: '#services' },
-    { name: 'Tarification', href: '#pricing' },
     { name: 'FAQ', href: '#faq' },
   ];
 
