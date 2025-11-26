@@ -8,7 +8,7 @@ import { Features } from '../components/sections/Features';
 import { Services } from '../components/sections/Services';
 import { Trust } from '../components/sections/Trust';
 import { FAQ } from '../components/sections/FAQ';
-import { WaitlistForm } from '../components/sections/WaitlistForm';
+import { Blog } from '../components/sections/Blog';
 import { Newsletter } from '../components/sections/Newsletter';
 
 const LandingPage: React.FC = () => {
@@ -22,7 +22,8 @@ const LandingPage: React.FC = () => {
         <Features />
         <Services />
         <Trust />
-        <WaitlistForm />
+        <Blog />
+        {/* <WaitlistForm /> - Removed as per request */}
         <FAQ />
         <Newsletter />
       </main>

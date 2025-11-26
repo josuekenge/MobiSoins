@@ -1,119 +1,148 @@
-import { ChevronRight, Syringe, Activity, FileHeart, Droplet, Stethoscope, Thermometer, Baby, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { clsx } from 'clsx';
+import { Activity, Filter, Layout } from 'lucide-react';
 
 export const Services = () => {
-  const services = [
-    {
-      icon: <Syringe className="h-6 w-6" />,
-      title: 'Injection & Vaccination',
-      description: 'Vaccins de voyage, grippe, rappels. Administration de médicaments et injections thérapeutiques.',
-      price: 'À partir de 45$',
-      popular: true,
-    },
-    {
-      icon: <Droplet className="h-6 w-6" />,
-      title: 'Prise de Sang à Domicile',
-      description: 'Analyses sanguines, tests réguliers. Prélèvements confortables avec transport rapide au laboratoire.',
-      price: 'À partir de 65$',
-      popular: true,
-    },
-    {
-      icon: <Activity className="h-6 w-6" />,
-      title: 'Soins de Plaies',
-      description: 'Pansements, sutures, plaies chroniques. Changement de pansements et évaluation de cicatrisation.',
-      price: 'À partir de 55$',
-      popular: false,
-    },
-    {
-      icon: <FileHeart className="h-6 w-6" />,
-      title: 'Soins Post-Opératoires',
-      description: 'Suivi après hospitalisation, surveillance des signes vitaux et gestion de la douleur.',
-      price: 'À partir de 75$',
-      popular: true,
-    },
-    {
-      icon: <Thermometer className="h-6 w-6" />,
-      title: 'Gestion du Diabète',
-      description: 'Surveillance glycémie, éducation. Contrôle de la glycémie et administration d\'insuline.',
-      price: 'À partir de 50$',
-      popular: false,
-    },
-    {
-      icon: <Stethoscope className="h-6 w-6" />,
-      title: 'Thérapie IV',
-      description: 'Hydratation, vitamines, médication. Administration de thérapies intraveineuses à domicile.',
-      price: 'À partir de 95$',
-      popular: false,
-    },
-    {
-      icon: <FileHeart className="h-6 w-6" />,
-      title: 'Soins Palliatifs',
-      description: 'Confort, gestion douleur, support. Accompagnement et soins de confort pour les personnes en fin de vie.',
-      price: 'Prix sur consultation',
-      popular: false,
-    },
-    {
-      icon: <Baby className="h-6 w-6" />,
-      title: 'Soins Pédiatriques',
-      description: 'Soins pour enfants, nouveau-nés. Services spécialisés pour les plus jeunes patients.',
-      price: 'À partir de 60$',
-      popular: false,
-    },
-  ];
-
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-24 bg-white relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-navy-900 mb-4">Nos Services</h2>
-            <p className="text-gray-600 text-lg">
-              Une gamme complète de soins infirmiers dispensés par des professionnels qualifiés.
-            </p>
-          </div>
-          <a href="#" className="text-navy-900 font-semibold hover:text-navy-700 inline-flex items-center gap-1 group">
-            Voir tous les services <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-          </a>
+        <div className="text-center mb-20">
+          <div className="text-blue-600 font-semibold mb-4">Nos Avantages</div>
+          <h2 className="text-4xl lg:text-6xl font-bold text-navy-900">
+            Votre santé mérite <br className="hidden md:block" />
+            ces <span className="bg-blue-600 text-white px-4 py-1 rounded-full transform -rotate-2 inline-block shadow-lg text-3xl lg:text-5xl align-middle mx-2">services</span> complets
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.5 }}
-              className={clsx(
-                "group relative p-6 bg-white border-2 border-gray-100 rounded-2xl hover:border-navy-300 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2",
-                service.popular && "ring-2 ring-navy-200"
-              )}
-            >
-              {service.popular && (
-                <div className="absolute -top-3 -right-3 bg-navy-800 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                  <Sparkles className="h-3 w-3" />
-                  Populaire
-                </div>
-              )}
-              
-              <div className="w-14 h-14 bg-navy-50 rounded-xl flex items-center justify-center text-navy-800 mb-4 group-hover:bg-navy-800 group-hover:text-white transition-colors duration-300 group-hover:scale-110 group-hover:rotate-3">
-                {service.icon}
+        <div className="grid md:grid-cols-3 gap-8">
+          
+          {/* Service 1: Monitoring */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group"
+          >
+            {/* Visual Mockup */}
+            <div className="bg-white border-2 border-gray-100 rounded-3xl p-6 mb-8 h-64 shadow-sm group-hover:shadow-xl transition-all relative overflow-hidden flex flex-col">
+              <div className="flex justify-between items-center mb-4">
+                <div className="font-bold text-navy-900">Suivi Santé</div>
+                <div className="w-1 h-4 bg-gray-200 rounded-full"></div>
               </div>
               
-              <h3 className="text-lg font-bold text-navy-900 mb-2">{service.title}</h3>
-              <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                {service.description}
+              {/* Mock Charts */}
+              <div className="space-y-4 flex-1">
+                 <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 bg-purple-100 rounded text-purple-500 flex items-center justify-center text-[10px]">📅</div>
+                    <div className="h-2 bg-gray-100 w-20 rounded-full"></div>
+                 </div>
+                 <div className="h-2 bg-blue-500 w-3/4 rounded-full"></div>
+                 <div className="h-2 bg-green-400 w-1/2 rounded-full"></div>
+                 
+                 <div className="mt-6 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <div className="text-xs font-bold text-navy-900 mb-1">Prochain RDV</div>
+                    <div className="text-[10px] text-gray-500">Demain, 14:00 avec Sarah</div>
+                 </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="px-4">
+              <div className="flex items-center gap-2 mb-3 text-purple-600 font-bold">
+                <Layout className="w-5 h-5" />
+                <span>Tableau de Bord</span>
+              </div>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">Suivi Personnalisé</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Un aperçu complet de vos rendez-vous passés et futurs, avec un accès direct à votre historique de soins.
               </p>
+            </div>
+          </motion.div>
+
+          {/* Service 2: Filters/Matching */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="group"
+          >
+            {/* Visual Mockup */}
+            <div className="bg-white border-2 border-gray-100 rounded-3xl p-6 mb-8 h-64 shadow-sm group-hover:shadow-xl transition-all relative overflow-hidden flex items-center justify-center">
+              <div className="absolute top-6 left-6 font-bold text-navy-900">Filtres Intelligents</div>
               
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                <span className="text-sm font-semibold text-navy-900">{service.price}</span>
-                <a href="#" className="text-sm font-semibold text-navy-800 hover:gap-2 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Réserver <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                </a>
+              {/* Mock Circles */}
+              <div className="relative w-full flex justify-center gap-4 items-center mt-6">
+                <div className="w-16 h-16 rounded-full border-2 border-purple-100 flex items-center justify-center relative">
+                   <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xs">📍</div>
+                </div>
+                <div className="h-[1px] w-12 bg-purple-200"></div>
+                <div className="w-16 h-16 rounded-full border-2 border-blue-100 flex items-center justify-center relative">
+                   <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xs">💉</div>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            </div>
+
+            {/* Content */}
+            <div className="px-4">
+              <div className="flex items-center gap-2 mb-3 text-blue-600 font-bold">
+                <Filter className="w-5 h-5" />
+                <span>Matching Précis</span>
+              </div>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">Trouvez l'Expert Idéal</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Notre algorithme vous connecte avec l'infirmière la plus qualifiée et la plus proche pour vos besoins spécifiques.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Service 3: Data/Analytics */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="group"
+          >
+            {/* Visual Mockup */}
+            <div className="bg-white border-2 border-gray-100 rounded-3xl p-6 mb-8 h-64 shadow-sm group-hover:shadow-xl transition-all relative overflow-hidden flex flex-col">
+               <div className="flex justify-between items-center mb-6">
+                <div className="font-bold text-navy-900">Rapports & Analyses</div>
+                <div className="w-1 h-4 bg-gray-200 rounded-full"></div>
+              </div>
+
+              {/* Mock Stats Bars */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                   <span className="text-[10px] font-bold w-12">Pression</span>
+                   <div className="h-2 bg-blue-500 rounded-full flex-1"></div>
+                   <span className="text-[10px] font-bold">120/80</span>
+                </div>
+                <div className="flex items-center gap-4">
+                   <span className="text-[10px] font-bold w-12">Glycémie</span>
+                   <div className="h-2 bg-purple-500 rounded-full w-3/4"></div>
+                   <span className="text-[10px] font-bold">5.4</span>
+                </div>
+                <div className="flex items-center gap-4">
+                   <span className="text-[10px] font-bold w-12">Poids</span>
+                   <div className="h-2 bg-green-500 rounded-full w-1/2"></div>
+                   <span className="text-[10px] font-bold">70kg</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="px-4">
+              <div className="flex items-center gap-2 mb-3 text-green-600 font-bold">
+                <Activity className="w-5 h-5" />
+                <span>Données Médicales</span>
+              </div>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">Suivi Clinique</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Accédez à des graphiques détaillés de votre santé et partagez facilement vos rapports avec votre médecin.
+              </p>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

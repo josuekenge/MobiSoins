@@ -1,47 +1,68 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export const TrustBar = () => {
   const partners = [
-    { name: 'OIIQ', logo: '🏥' },
-    { name: 'Ministère de la Santé', logo: '🇨🇦' },
-    { name: 'Association Médicale', logo: '⚕️' },
-    { name: 'Hôpital Général', logo: '🏨' },
+    "OIIQ", "Santé Québec", "Croix Bleue", "Desjardins", "Sun Life", 
+    "Manuvie", "SSQ Assurance", "La Capitale", "Cliniques Médicales", "Pharmaprix",
+    "OIIQ", "Santé Québec", "Croix Bleue", "Desjardins", "Sun Life", 
+    "Manuvie", "SSQ Assurance", "La Capitale", "Cliniques Médicales", "Pharmaprix"
   ];
 
   return (
-    <section className="py-8 bg-gray-50 border-y border-gray-100">
-      <div className="container-custom">
+    <section className="py-12 bg-gray-50 border-y border-gray-100 overflow-hidden">
+      <div className="container-custom mb-8 text-center">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-6"
         >
-          <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+          <p className="text-sm font-bold text-blue-600 uppercase tracking-widest">
             Confiance & Partenaires
           </p>
         </motion.div>
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-60 hover:opacity-100 transition-opacity">
+      </div>
+
+      <div className="relative flex overflow-hidden group">
+        <div className="flex space-x-16 animate-marquee whitespace-nowrap">
           {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center gap-2 group"
+            <span 
+              key={index} 
+              className="text-2xl font-bold text-navy-800/70 hover:text-blue-600 transition-colors cursor-default select-none"
             >
-              <div className="text-4xl grayscale group-hover:grayscale-0 transition-all">
-                {partner.logo}
-              </div>
-              <p className="text-xs text-gray-600 font-medium">{partner.name}</p>
-            </motion.div>
+              {partner}
+            </span>
+          ))}
+        </div>
+        
+        <div className="absolute top-0 flex space-x-16 animate-marquee2 whitespace-nowrap">
+           {partners.map((partner, index) => (
+            <span 
+              key={`dup-${index}`} 
+              className="text-2xl font-bold text-navy-800/70 hover:text-blue-600 transition-colors cursor-default select-none"
+            >
+              {partner}
+            </span>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-100%); }
+        }
+        @keyframes marquee2 {
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-marquee {
+          animation: marquee 60s linear infinite;
+        }
+        .animate-marquee2 {
+          animation: marquee2 60s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };
-
