@@ -4,7 +4,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white pt-20 pb-10 border-t border-gray-100">
+    <footer className="bg-white pt-20 pb-10">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
           
@@ -14,10 +14,10 @@ export const Footer = () => {
               <img 
                 src="/mobisoins-logo.jpeg" 
                 alt="MobiSoins Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-32 w-auto object-contain mix-blend-multiply"
               />
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-gray-500 text-base leading-relaxed max-w-xs mb-6">
               MobiSoins révolutionne l'accès aux soins de santé à domicile au Québec. 
               Simple, rapide et humain.
             </p>
@@ -25,8 +25,8 @@ export const Footer = () => {
 
           {/* Links Columns */}
           <div>
-            <h4 className="font-bold text-navy-900 mb-6">MobiSoins</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <h4 className="font-bold text-navy-900 text-lg mb-6">MobiSoins</h4>
+            <ul className="space-y-4 text-base text-gray-500">
               <li><a href="#" className="hover:text-blue-600 transition-colors">À Propos</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Carrières</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Presse</a></li>
@@ -35,8 +35,8 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-navy-900 mb-6">Produit</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <h4 className="font-bold text-navy-900 text-lg mb-6">Produit</h4>
+            <ul className="space-y-4 text-base text-gray-500">
               <li><a href="#" className="hover:text-blue-600 transition-colors">Pour Patients</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Pour Infirmières</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Tarification</a></li>
@@ -45,8 +45,8 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-navy-900 mb-6">Légal</h4>
-            <ul className="space-y-4 text-sm text-gray-500">
+            <h4 className="font-bold text-navy-900 text-lg mb-6">Légal</h4>
+            <ul className="space-y-4 text-base text-gray-500">
               <li><a href="#" className="hover:text-blue-600 transition-colors">Confidentialité</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Conditions</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Cookies</a></li>
@@ -57,7 +57,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-400">
+          <p className="text-base text-gray-400">
             © {currentYear} MobiSoins Inc. Tous droits réservés.
           </p>
           

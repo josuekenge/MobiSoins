@@ -4,7 +4,13 @@ import { Input } from '../ui/Input';
 
 export const Newsletter = () => {
   return (
-    <section className="py-24 bg-gray-50 border-t border-gray-100 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Gradient Blobs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-[50%] -left-[20%] w-[100%] h-[100%] bg-blue-50/50 rounded-full blur-3xl opacity-60"></div>
+        <div className="absolute -bottom-[50%] -right-[20%] w-[100%] h-[100%] bg-blue-50/50 rounded-full blur-3xl opacity-60"></div>
+      </div>
+
       {/* Background Grid */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e3a5f05_1px,transparent_1px),linear-gradient(to_bottom,#1e3a5f05_1px,transparent_1px)] bg-[size:2rem_2rem] [mask-image:linear-gradient(to_bottom,transparent,white)]"></div>

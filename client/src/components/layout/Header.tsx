@@ -38,7 +38,7 @@ export const Header = () => {
           <motion.img 
             src="/mobisoins-logo.jpeg" 
             alt="MobiSoins Logo" 
-            className="h-[80px] md:h-[92px] w-auto object-contain drop-shadow-sm"
+            className="h-[80px] md:h-[92px] w-auto object-contain mix-blend-multiply"
             style={{
               objectFit: 'contain',
             }}
@@ -57,7 +57,7 @@ export const Header = () => {
               className="relative text-sm font-medium text-gray-700 hover:text-navy-800 transition-colors group"
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-navy-800 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           
@@ -87,7 +87,7 @@ export const Header = () => {
             variant="primary" 
             size="sm" 
             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white hover:shadow-lg transform hover:scale-105 transition-all"
+            className="bg-blue-600 text-white hover:shadow-lg transform hover:scale-105 transition-all"
           >
             Télécharger l'App
           </Button>

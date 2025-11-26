@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { Hero } from '../components/sections/Hero';
-import { TrustBar } from '../components/sections/TrustBar';
 import { HowItWorks } from '../components/sections/HowItWorks';
 import { Features } from '../components/sections/Features';
 import { Services } from '../components/sections/Services';
@@ -17,7 +16,6 @@ const LandingPage: React.FC = () => {
       <Header />
       <main className="flex-grow">
         <Hero />
-        <TrustBar />
         <HowItWorks />
         <Features />
         <Services />

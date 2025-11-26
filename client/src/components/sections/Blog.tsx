@@ -17,7 +17,7 @@ export const Blog = () => {
       link: "#"
     },
     {
-      image: "https://images.unsplash.com/photo-1584515933487-9d3005c01312?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       tags: ["Bien-être", "Conseils"],
       title: "Préparer sa première visite infirmière",
       description: "Guide complet pour vous préparer à recevoir des soins infirmiers professionnels dans le confort de votre foyer.",
@@ -26,8 +26,14 @@ export const Blog = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Gradient Blobs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-[10%] w-[70%] h-[70%] bg-blue-50/30 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-0 right-[10%] w-[70%] h-[70%] bg-blue-50/40 rounded-full blur-3xl opacity-50"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="mb-16">
           <span className="text-blue-600 font-semibold mb-2 block">Notre Blog</span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -79,4 +85,6 @@ export const Blog = () => {
     </section>
   );
 };
+
+
 

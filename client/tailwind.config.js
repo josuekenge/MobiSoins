@@ -15,29 +15,41 @@ export default {
           400: '#829ab1',
           500: '#627d98',
           600: '#486581',
-          700: '#334e68',
-          800: '#1e3a5f', // Primary navy from logo
-          900: '#152942', // Darker navy
+          700: '#003366', 
+          800: '#003366', 
+          900: '#003366', // Unified to #003366
+        },
+        blue: {
+          50: '#eef6fc', 
+          100: '#dcebf9',
+          200: '#b9d7f3',
+          300: '#96c3ed',
+          400: '#509ce1',
+          500: '#003366', // Updated to #003366
+          600: '#003366', // The requested color
+          700: '#003366', // Unified
+          800: '#00264d',
+          900: '#001f40',
         },
         green: {
-          50: '#f0f9f4',
-          100: '#dcf3e6',
-          200: '#b8e7cd',
-          300: '#7cd4a4',
-          400: '#7cb342', // Primary green from logo
-          500: '#5a9b2f',
-          600: '#4a8027',
-          700: '#3d6821',
-          800: '#2f511a',
-          900: '#234013',
+          50: '#f4f8f3',
+          100: '#e6eee4',
+          200: '#cddcc9',
+          300: '#aebfa9',
+          400: '#98B690', // New Accent Green #98B690
+          500: '#7da074',
+          600: '#63825b',
+          700: '#4e6645',
+          800: '#3d5036',
+          900: '#32412d',
         },
         primary: {
-          DEFAULT: '#1e3a5f',
-          light: '#2c4f7c',
+          DEFAULT: '#003366', // Updated to #003366
+          light: '#004080',
         },
         secondary: {
-          DEFAULT: '#7cb342',
-          dark: '#5a8a2a',
+          DEFAULT: '#98B690', // Updated to #98B690
+          dark: '#7da074',
         },
         accent: {
           DEFAULT: '#007BFF',

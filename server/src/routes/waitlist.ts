@@ -65,3 +65,5 @@ router.post('/', validateWaitlist, async (req: Request, res: Response) => {
 
 export default router;
 
+
+
