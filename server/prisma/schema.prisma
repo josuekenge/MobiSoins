@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Waitlist {
+  id          Int      @id @default(autoincrement())
+  fullName    String
+  email       String   @unique
+  phone       String?
+  role        String   // Patient or Nurse
+  city        String
+  language    String   // Français or English
+  consent     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
