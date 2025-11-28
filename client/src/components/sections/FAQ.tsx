@@ -1,43 +1,45 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const { t } = useLanguage();
 
   const faqs = [
     {
-      question: "Comment fonctionne MobiSoins?",
-      answer: "MobiSoins connecte les patients avec des infirmières certifiées pour des soins à domicile. Vous réservez via l'application, suivez votre infirmière en temps réel, et payez de manière sécurisée après le service."
+      question: t('faq.question1'),
+      answer: t('faq.answer1')
     },
     {
-      question: "Les infirmières sont-elles vraiment certifiées?",
-      answer: "Oui, absolument. Toutes nos infirmières sont membres de l'Ordre des Infirmières et Infirmiers du Québec (OIIQ), possèdent une assurance responsabilité civile, et ont passé notre processus de vérification rigoureux incluant la vérification des antécédents."
+      question: t('faq.question2'),
+      answer: t('faq.answer2')
     },
     {
-      question: "Quels sont les coûts?",
-      answer: "Les prix varient selon le service (45$ à 95$ en moyenne). Le prix exact est affiché avant la réservation. Aucun frais caché. Paiement sécurisé par carte de crédit ou Apple Pay."
+      question: t('faq.question3'),
+      answer: t('faq.answer3')
     },
     {
-      question: "Quelles régions sont couvertes?",
-      answer: "Actuellement disponible à Montréal, Québec, Laval, Gatineau, Longueuil, et Sherbrooke. Expansion prévue dans 10+ villes d'ici fin 2025."
+      question: t('faq.question4'),
+      answer: t('faq.answer4')
     },
     {
-      question: "Comment devenir infirmière partenaire?",
-      answer: "Inscrivez-vous via notre formulaire 'Devenir Infirmière'. Nous vérifions votre licence OIIQ, assurance, et effectuons une entrevue. Vous pouvez commencer à accepter des missions sous 5 jours ouvrables."
+      question: t('faq.question5'),
+      answer: t('faq.answer5')
     },
     {
-      question: "Les paiements sont-ils sécurisés?",
-      answer: "Oui, tous les paiements sont traités par Stripe, leader mondial en sécurité des paiements. Nous ne stockons jamais vos informations bancaires."
+      question: t('faq.question6'),
+      answer: t('faq.answer6')
     },
     {
-      question: "Puis-je choisir mon infirmière?",
-      answer: "Vous pouvez voir le profil, les évaluations, et l'expérience de l'infirmière avant d'accepter la mission. Si vous avez une préférence, vous pouvez la demander pour vos prochaines visites."
+      question: t('faq.question7'),
+      answer: t('faq.answer7')
     },
     {
-      question: "Que se passe-t-il en cas d'urgence médicale?",
-      answer: "MobiSoins n'est PAS un service d'urgence. En cas d'urgence vitale, composez le 911. Nos infirmières peuvent gérer les soins non-urgents et vous orienter vers les urgences si nécessaire."
+      question: t('faq.question8'),
+      answer: t('faq.answer8')
     }
   ];
 
@@ -57,17 +59,17 @@ export const FAQ = () => {
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-navy-900 mb-4">
-            Questions Fréquentes
+            {t('faq.title')}
           </h2>
           <p className="text-gray-600 text-lg mb-8">
-            Trouvez des réponses à vos questions les plus courantes
+            {t('faq.subtitle')}
           </p>
           
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Rechercher une question..."
+              placeholder={t('faq.searchPlaceholder')}
               className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-gray-200 focus:border-navy-600 focus:ring-2 focus:ring-navy-100 outline-none transition-all shadow-sm bg-white"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -113,7 +115,7 @@ export const FAQ = () => {
               </motion.div>
             ))
           ) : (
-            <p className="text-center text-gray-500 py-12">Aucune question trouvée pour votre recherche.</p>
+            <p className="text-center text-gray-500 py-12">{t('faq.noResults')}</p>
           )}
         </div>
       </div>

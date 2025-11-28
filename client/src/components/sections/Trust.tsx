@@ -1,51 +1,54 @@
 import { Star, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const Trust = () => {
+  const { t } = useLanguage();
+  
   const testimonials = [
     {
-      headline: "Un service exceptionnel",
-      text: "L'application est intuitive et l'infirmière est arrivée exactement à l'heure prévue. Une expérience sans stress pour ma mère âgée.",
+      headline: t('trust.testimonial1Headline'),
+      text: t('trust.testimonial1Text'),
       author: "Marie L.",
       handle: "@marie_montreal",
       platform: "instagram",
       avatar: "https://i.pravatar.cc/150?img=5"
     },
     {
-      headline: "Rapidité incroyable",
-      text: "J'ai pu réserver une prise de sang pour le lendemain matin. Résultats reçus directement dans l'app. C'est le futur!",
+      headline: t('trust.testimonial2Headline'),
+      text: t('trust.testimonial2Text'),
       author: "Jean Tremblay",
       handle: "@jtremblay",
       platform: "twitter",
       avatar: "https://i.pravatar.cc/150?img=11"
     },
     {
-      headline: "Professionnalisme au top",
-      text: "Infirmière très douce et compétente. Elle a pris le temps de tout expliquer. Je recommande MobiSoins à 100%.",
+      headline: t('trust.testimonial3Headline'),
+      text: t('trust.testimonial3Text'),
       author: "Sophie B.",
       handle: "@sophie_b_nurse",
       platform: "facebook",
       avatar: "https://i.pravatar.cc/150?img=9"
     },
     {
-      headline: "Sauveur de temps",
-      text: "Fini les attentes interminables en clinique. Le service à domicile change complètement la donne pour notre famille.",
+      headline: t('trust.testimonial4Headline'),
+      text: t('trust.testimonial4Text'),
       author: "Pierre G.",
       handle: "@pierreg_quebec",
       platform: "twitter",
       avatar: "https://i.pravatar.cc/150?img=13"
     },
     {
-      headline: "Simplicité d'utilisation",
-      text: "L'interface est claire, le suivi en temps réel est rassurant. On sait exactement quand l'infirmière arrive.",
+      headline: t('trust.testimonial5Headline'),
+      text: t('trust.testimonial5Text'),
       author: "Isabelle K.",
       handle: "@isa_k",
       platform: "instagram",
       avatar: "https://i.pravatar.cc/150?img=24"
     },
     {
-      headline: "Qualité hospitalière",
-      text: "Les soins reçus à la maison étaient de même qualité qu'à l'hôpital, mais dans le confort de mon salon.",
+      headline: t('trust.testimonial6Headline'),
+      text: t('trust.testimonial6Text'),
       author: "Marc A.",
       handle: "@marco_polo",
       platform: "linkedin",
@@ -78,10 +81,10 @@ export const Trust = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
-          <div className="text-blue-600 font-semibold mb-2">Témoignages</div>
+          <div className="text-blue-600 font-semibold mb-2">{t('trust.badge')}</div>
           <h2 className="text-4xl lg:text-5xl font-bold text-navy-900">
-            Ce que nos patients <br />
-            disent de nous
+            {t('trust.title')} <br />
+            {t('trust.subtitle')}
           </h2>
         </div>
 

@@ -1,5 +1,6 @@
 import { Map, Shield, BadgeCheck, Clock, Search, Calendar, Home, User, History, Stethoscope, Syringe, Pill, ClipboardList } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const MinimalBackground = () => (
   <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -36,29 +37,31 @@ const MinimalBackground = () => (
 );
 
 export const Features = () => {
+  const { t } = useLanguage();
+  
   const features = [
     {
       icon: Map,
-      title: "Géolocalisation",
-      description: "Suivez l'arrivée de votre infirmière en temps réel sur la carte, comme pour un taxi.",
+      title: t('features.geolocation'),
+      description: t('features.geolocationDescription'),
       delay: 0.1
     },
     {
       icon: Shield,
-      title: "100% Sécurisé",
-      description: "Vos données de santé sont chiffrées et protégées selon les normes les plus strictes.",
+      title: t('features.secure'),
+      description: t('features.secureDescription'),
       delay: 0.2
     },
     {
       icon: BadgeCheck,
-      title: "Certifié OIIQ",
-      description: "Toutes nos infirmières sont vérifiées et membres en règle de l'ordre professionnel.",
+      title: t('features.certified'),
+      description: t('features.certifiedDescription'),
       delay: 0.3
     },
     {
       icon: Clock,
-      title: "Disponible 24/7",
-      description: "Des soins accessibles jour et nuit, fin de semaine incluse, pour votre tranquillité d'esprit.",
+      title: t('features.available'),
+      description: t('features.availableDescription'),
       delay: 0.4
     }
   ];
@@ -79,11 +82,11 @@ export const Features = () => {
               className="mb-12"
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6 leading-tight">
-                Une solution complète qui <br/>
-                <span className="text-blue-600">simplifie vos soins.</span>
+                {t('features.mainTitle')} <br/>
+                <span className="text-blue-600">{t('features.mainTitleHighlight')}</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-md">
-                Profitez d'une technologie de pointe conçue pour vous offrir la meilleure expérience de soins à domicile.
+                {t('features.mainSubtitle')}
               </p>
             </motion.div>
 

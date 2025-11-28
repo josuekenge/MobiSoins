@@ -1,22 +1,25 @@
 import { Calendar, MapPin, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const HowItWorks = () => {
+  const { t } = useLanguage();
+  
   const steps = [
     {
       icon: <Calendar className="h-8 w-8 text-blue-600" />,
-      title: 'Réservez en 2 Minutes',
-      description: 'Choisissez votre service, l\'heure qui vous convient, et confirmez votre adresse.',
+      title: t('howItWorks.step1Title'),
+      description: t('howItWorks.step1Description'),
     },
     {
       icon: <MapPin className="h-8 w-8 text-blue-600" />,
-      title: 'Suivi en Temps Réel',
-      description: 'Voyez votre infirmière se déplacer vers vous sur la carte en temps réel.',
+      title: t('howItWorks.step2Title'),
+      description: t('howItWorks.step2Description'),
     },
     {
       icon: <Heart className="h-8 w-8 text-blue-600" />,
-      title: 'Soins Professionnels',
-      description: 'Profitez de soins de qualité hospitalière dans le confort de votre maison.',
+      title: t('howItWorks.step3Title'),
+      description: t('howItWorks.step3Description'),
     },
   ];
 
@@ -31,10 +34,10 @@ export const HowItWorks = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
-            Comment ça marche?
+            {t('howItWorks.title')}
           </h2>
           <p className="text-gray-500 text-lg">
-            MobiSoins simplifie l'accès aux soins de santé à domicile.
+            {t('howItWorks.subtitle')}
           </p>
         </div>
 

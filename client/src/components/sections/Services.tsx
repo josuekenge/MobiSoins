@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Activity, Filter, Layout } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const Services = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="services" className="py-24 bg-white relative overflow-hidden">
       {/* Gradient Blobs */}
@@ -12,10 +15,10 @@ export const Services = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
-          <div className="text-blue-600 font-semibold mb-4">Nos Avantages</div>
+          <div className="text-blue-600 font-semibold mb-4">{t('services.badge')}</div>
           <h2 className="text-4xl lg:text-6xl font-bold text-navy-900">
-            Votre santé mérite <br className="hidden md:block" />
-            ces <span className="bg-blue-600 text-white px-4 py-1 rounded-full transform -rotate-2 inline-block shadow-lg text-3xl lg:text-5xl align-middle mx-2">services</span> complets
+            {t('services.mainTitle')} <br className="hidden md:block" />
+            {t('services.mainTitlePrefix')} <span className="bg-blue-600 text-white px-4 py-1 rounded-full transform -rotate-2 inline-block shadow-lg text-3xl lg:text-5xl align-middle mx-2">{t('services.mainTitleHighlight')}</span> {t('services.mainTitleSuffix')}
           </h2>
         </div>
 
@@ -30,7 +33,7 @@ export const Services = () => {
           >
             {/* Visual Mockup */}
             <div className="bg-white border-2 border-gray-100 rounded-3xl p-6 mb-8 h-64 shadow-sm group-hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-center">
-              <div className="absolute top-6 left-6 font-bold text-navy-900 text-sm">Tableau de Bord</div>
+              <div className="absolute top-6 left-6 font-bold text-navy-900 text-sm">{t('services.card1Visual')}</div>
               
               {/* Mock Dashboard UI */}
               <div className="w-full space-y-3 mt-4 px-2">
@@ -38,8 +41,8 @@ export const Services = () => {
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm text-xs">📅</div>
                       <div>
-                        <div className="text-[10px] font-bold text-navy-900">Prochain RDV</div>
-                        <div className="text-[9px] text-gray-500">Demain, 14:00</div>
+                        <div className="text-[10px] font-bold text-navy-900">{t('services.card1Item1')}</div>
+                        <div className="text-[9px] text-gray-500">{t('services.card1Item1Detail')}</div>
                       </div>
                     </div>
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -49,8 +52,8 @@ export const Services = () => {
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm text-xs">💊</div>
                       <div>
-                        <div className="text-[10px] font-bold text-navy-900">Médicaments</div>
-                        <div className="text-[9px] text-gray-500">Pris à 08:00</div>
+                        <div className="text-[10px] font-bold text-navy-900">{t('services.card1Item2')}</div>
+                        <div className="text-[9px] text-gray-500">{t('services.card1Item2Detail')}</div>
                       </div>
                     </div>
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
@@ -62,11 +65,11 @@ export const Services = () => {
             <div className="px-4">
               <div className="flex items-center gap-2 mb-3 text-blue-600 font-bold">
                 <Layout className="w-5 h-5" />
-                <span>Suivi Personnalisé</span>
+                <span>{t('services.card1Badge')}</span>
               </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">Tout au même endroit</h3>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">{t('services.card1Title')}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Gérez vos rendez-vous, suivez vos prescriptions et consultez votre historique de soins en un clin d'œil.
+                {t('services.card1Description')}
               </p>
             </div>
           </motion.div>
@@ -81,7 +84,7 @@ export const Services = () => {
           >
             {/* Visual Mockup */}
             <div className="bg-white border-2 border-gray-100 rounded-3xl p-6 mb-8 h-64 shadow-sm group-hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-center items-center">
-              <div className="absolute top-6 left-6 font-bold text-navy-900 text-sm">Recherche Intelligente</div>
+              <div className="absolute top-6 left-6 font-bold text-navy-900 text-sm">{t('services.card2Visual')}</div>
               
               {/* Mock Search UI */}
               <div className="w-full max-w-[200px] space-y-3 mt-2">
@@ -107,11 +110,11 @@ export const Services = () => {
             <div className="px-4">
               <div className="flex items-center gap-2 mb-3 text-blue-600 font-bold">
                 <Filter className="w-5 h-5" />
-                <span>Matching Précis</span>
+                <span>{t('services.card2Badge')}</span>
               </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">Trouvez l'Expert Idéal</h3>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">{t('services.card2Title')}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Notre algorithme vous connecte instantanément avec l'infirmière qualifiée la plus proche de chez vous.
+                {t('services.card2Description')}
               </p>
             </div>
           </motion.div>
@@ -126,7 +129,7 @@ export const Services = () => {
           >
             {/* Visual Mockup */}
             <div className="bg-white border-2 border-gray-100 rounded-3xl p-6 mb-8 h-64 shadow-sm group-hover:shadow-xl transition-all relative overflow-hidden flex flex-col justify-center">
-               <div className="absolute top-6 left-6 font-bold text-navy-900 text-sm">Vos Données</div>
+               <div className="absolute top-6 left-6 font-bold text-navy-900 text-sm">{t('services.card3Visual')}</div>
 
               {/* Mock Graph UI */}
               <div className="w-full mt-4 px-2 relative h-32 flex items-end justify-between gap-2">
@@ -151,11 +154,11 @@ export const Services = () => {
             <div className="px-4">
               <div className="flex items-center gap-2 mb-3 text-blue-600 font-bold">
                 <Activity className="w-5 h-5" />
-                <span>Suivi Clinique</span>
+                <span>{t('services.card3Badge')}</span>
               </div>
-              <h3 className="text-xl font-bold text-navy-900 mb-3">Visualisez vos progrès</h3>
+              <h3 className="text-xl font-bold text-navy-900 mb-3">{t('services.card3Title')}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Des graphiques clairs et détaillés pour suivre l'évolution de votre santé et partager vos rapports facilement.
+                {t('services.card3Description')}
               </p>
             </div>
           </motion.div>
