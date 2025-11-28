@@ -67,7 +67,7 @@ export const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
+    <section id="features" className="py-32 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
       <MinimalBackground />
       
       <div className="container mx-auto px-6 relative z-10">
@@ -96,6 +96,7 @@ export const Features = () => {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5 }}
                   viewport={{ once: true }}
                   transition={{ delay: feature.delay }}
                   className="group"

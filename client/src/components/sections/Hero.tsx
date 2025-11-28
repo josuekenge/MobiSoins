@@ -81,10 +81,10 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+    <section className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-32 pb-24 overflow-hidden">
       {/* Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-100/40 rounded-full blur-[120px] opacity-60"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-gradient-to-br from-blue-50 via-blue-100/30 to-green-50/20 rounded-full blur-[120px] opacity-70"></div>
       </div>
 
       {/* Background Grid Pattern */}
@@ -93,11 +93,11 @@ export const Hero = () => {
       </div>
 
       {/* Header Content */}
-      <div className="container mx-auto px-6 text-center z-10 mb-12">
+      <div className="container mx-auto px-6 text-center z-10 mb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-navy-50 text-navy-800 rounded-full text-sm font-semibold mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-navy-50 text-navy-800 rounded-full text-sm font-semibold mb-8"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -155,12 +155,13 @@ export const Hero = () => {
       </div>
 
       {/* Central Visual & Floating Cards - Responsive Layout */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 xl:gap-16 mb-12 z-20">
+      <div className="relative w-full max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 xl:gap-24 mb-20 z-20">
         
         {/* LEFT SIDE: Priority Access Card */}
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
+          whileHover={{ scale: 1.02 }}
           transition={{ delay: 0.4, duration: 0.6 }}
           className="relative bg-white p-8 lg:p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 border border-gray-100 w-full max-w-[400px] flex flex-col justify-center z-30"
         >
@@ -180,7 +181,7 @@ export const Hero = () => {
           {/* Form */}
           <form onSubmit={handleSubmit} className="relative w-full mb-8">
             <div className="relative group">
-              <div className="absolute inset-0 bg-blue-100 rounded-2xl blur-md opacity-40 group-hover:opacity-60 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-50 rounded-2xl blur-md opacity-40 group-hover:opacity-60 transition-opacity"></div>
               <input 
                 type="email" 
                 placeholder={t('hero.emailPlaceholder')}
@@ -212,7 +213,7 @@ export const Hero = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center gap-1.5 text-green-700 font-semibold text-xs"
+                  className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center gap-1.5 text-blue-700 font-semibold text-xs"
                 >
                   <CheckCircle className="w-3.5 h-3.5" />
                   <span>{t('hero.successMessage')}</span>
@@ -355,6 +356,7 @@ export const Hero = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.05, x: -5 }}
               transition={{ delay: 0.6 }}
               className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-56 hover:shadow-xl transition-all duration-300"
             >
@@ -373,6 +375,7 @@ export const Hero = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.05, x: -5 }}
               transition={{ delay: 0.7 }}
               className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-64 hover:shadow-xl transition-all duration-300"
             >
@@ -381,7 +384,7 @@ export const Hero = () => {
                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-sm text-lg border border-gray-100">👩‍⚕️</div>
                  <div>
                     <div className="text-xs font-bold text-navy-900">Inf. Sarah</div>
-                    <div className="text-[10px] text-green-600 font-medium flex items-center gap-1">
+                    <div className="text-[10px] text-blue-600 font-medium flex items-center gap-1">
                        <Clock className="w-3 h-3" /> 14:00 - 15:00
                     </div>
                  </div>
@@ -392,6 +395,7 @@ export const Hero = () => {
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.05, x: -5 }}
               transition={{ delay: 0.8 }}
               className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-60 hover:shadow-xl transition-all duration-300"
             >
@@ -403,7 +407,7 @@ export const Hero = () => {
                  </div>
                  <div className="flex justify-between items-center text-xs">
                     <span className="text-gray-500">{t('hero.network')}</span>
-                    <span className="font-bold text-green-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> 500+ {t('hero.nurses')}</span>
+                    <span className="font-bold text-blue-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> 500+ {t('hero.nurses')}</span>
                  </div>
                  <div className="flex justify-between items-center text-xs">
                     <span className="text-gray-500">{t('hero.zone')}</span>

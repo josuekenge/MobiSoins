@@ -38,7 +38,7 @@ export const Header = () => {
           <motion.img 
             src="/mobisoins-logo.jpeg" 
             alt="MobiSoins Logo" 
-            className="h-[80px] md:h-[92px] w-auto object-contain mix-blend-multiply"
+            className="h-[110px] md:h-[130px] w-auto object-contain mix-blend-multiply"
             style={{
               objectFit: 'contain',
             }}
@@ -57,7 +57,7 @@ export const Header = () => {
               className="relative text-sm font-medium text-gray-700 hover:text-navy-800 transition-colors group"
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           

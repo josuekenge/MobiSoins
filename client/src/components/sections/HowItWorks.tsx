@@ -24,7 +24,7 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+    <section id="how-it-works" className="py-32 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
       {/* Decorative background blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-100/40 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2"></div>
@@ -32,7 +32,7 @@ export const HowItWorks = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-24">
           <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
             {t('howItWorks.title')}
           </h2>
@@ -41,7 +41,7 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 relative">
+        <div className="grid md:grid-cols-3 gap-16 relative">
           {/* Connecting line for desktop */}
           <div className="hidden md:block absolute top-10 left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-transparent via-blue-100 to-transparent -z-10"></div>
 
@@ -50,6 +50,7 @@ export const HowItWorks = () => {
                 key={index} 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -10 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
                 className="flex flex-col items-center text-center group"

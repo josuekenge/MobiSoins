@@ -6,7 +6,7 @@ export const Services = () => {
   const { t } = useLanguage();
   
   return (
-    <section id="services" className="py-24 bg-white relative overflow-hidden">
+    <section id="services" className="py-32 bg-white relative overflow-hidden">
       {/* Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[10%] left-[5%] w-[50%] h-[50%] bg-blue-50/60 rounded-full blur-3xl opacity-70"></div>
@@ -14,7 +14,7 @@ export const Services = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <div className="text-blue-600 font-semibold mb-4">{t('services.badge')}</div>
           <h2 className="text-4xl lg:text-6xl font-bold text-navy-900">
             {t('services.mainTitle')} <br className="hidden md:block" />
@@ -22,12 +22,13 @@ export const Services = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-12">
           
           {/* Service 1: Monitoring */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -10 }}
             viewport={{ once: true }}
             className="group"
           >

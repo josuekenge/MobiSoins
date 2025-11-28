@@ -67,7 +67,7 @@ export const Trust = () => {
   };
 
   return (
-    <section id="trust" className="py-24 bg-white relative overflow-hidden">
+    <section id="trust" className="py-32 bg-white relative overflow-hidden">
       {/* Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-[10%] right-[10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-3xl opacity-50"></div>
@@ -80,7 +80,7 @@ export const Trust = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-24">
           <div className="text-blue-600 font-semibold mb-2">{t('trust.badge')}</div>
           <h2 className="text-4xl lg:text-5xl font-bold text-navy-900">
             {t('trust.title')} <br />
@@ -88,15 +88,16 @@ export const Trust = () => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((t, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col h-full"
+              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
             >
               <div className="font-bold text-navy-900 mb-3 text-lg">{t.headline}</div>
               <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
