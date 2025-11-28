@@ -4,6 +4,7 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { motion, AnimatePresence } from 'framer-motion';
 import { z } from 'zod';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const FORM_ACCESS_KEY = import.meta.env.VITE_FORM_ACCESS_KEY;
 
@@ -15,6 +16,7 @@ export const Newsletter = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'invalid'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (submitStatus === 'success' || submitStatus === 'error' || submitStatus === 'invalid') {
@@ -90,12 +92,12 @@ export const Newsletter = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           
           <div className="max-w-2xl">
-            <span className="text-blue-600 font-semibold mb-2 block">Commencez dès aujourd'hui</span>
+            <span className="text-blue-600 font-semibold mb-2 block">{t('newsletter.subtitle')}</span>
             <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
-              Rejoignez la liste d'attente
+              {t('newsletter.title')}
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              Soyez parmi les premiers à profiter de l'expérience MobiSoins et bénéficiez d'avantages exclusifs au lancement.
+              {t('newsletter.description')}
             </p>
           </div>
 
@@ -104,7 +106,7 @@ export const Newsletter = () => {
               <Input 
                 type="email"
                 name="email"
-                placeholder="votre@email.com" 
+                placeholder={t('newsletter.emailPlaceholder')} 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -118,7 +120,7 @@ export const Newsletter = () => {
                 disabled={isSubmitting}
                 className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-full px-8 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Envoi...' : 'M\'inscrire'}
+                {isSubmitting ? t('newsletter.submitting') : t('newsletter.submitButton')}
               </Button>
             </form>
 
@@ -136,8 +138,8 @@ export const Newsletter = () => {
                       <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-navy-900 text-sm">Merci !</div>
-                      <div className="text-gray-600 text-sm">Vous êtes inscrit à la liste d'attente.</div>
+                      <div className="font-bold text-navy-900 text-sm">{t('newsletter.successTitle')}</div>
+                      <div className="text-gray-600 text-sm">{t('newsletter.successMessage')}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -156,8 +158,8 @@ export const Newsletter = () => {
                       <XCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-navy-900 text-sm">Erreur</div>
-                      <div className="text-gray-600 text-sm">Une erreur s'est produite. Veuillez réessayer.</div>
+                      <div className="font-bold text-navy-900 text-sm">{t('newsletter.errorTitle')}</div>
+                      <div className="text-gray-600 text-sm">{t('newsletter.errorMessage')}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -176,7 +178,7 @@ export const Newsletter = () => {
                       <AlertCircle className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-navy-900 text-sm">Email invalide</div>
+                      <div className="font-bold text-navy-900 text-sm">{t('newsletter.invalidEmailTitle')}</div>
                       <div className="text-gray-600 text-sm">{errorMessage}</div>
                     </div>
                   </div>
@@ -187,11 +189,11 @@ export const Newsletter = () => {
             <div className="flex flex-wrap gap-6 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-blue-600 fill-blue-100" />
-                <span>Accès prioritaire</span>
+                <span>{t('newsletter.priorityAccess')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-blue-600 fill-blue-100" />
-                <span>Pas de carte requise</span>
+                <span>{t('newsletter.noCardRequired')}</span>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Clock, CheckCircle, Activity, Calendar, FileText, User, Mail, Search, ChevronDown, ArrowRight, Loader2, AlertCircle, XCircle } from 'lucide-react';
 import { z } from 'zod';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const emailSchema = z.string().email({ message: "Email invalide" });
 
@@ -9,6 +10,7 @@ export const Hero = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'invalid'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (status === 'success' || status === 'error' || status === 'invalid') {
@@ -101,7 +103,7 @@ export const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
-          Disponible au Québec
+          {t('hero.availableInQuebec')}
         </motion.div>
 
         <motion.h1 
@@ -110,9 +112,9 @@ export const Hero = () => {
           transition={{ delay: 0.1 }}
           className="text-5xl lg:text-7xl font-bold text-navy-900 tracking-tight mb-6"
         >
-          Soins Infirmiers <br className="hidden md:block" />
+          {t('hero.title')} <br className="hidden md:block" />
           <span className="text-blue-600">
-            Directement à Domicile
+            {t('hero.titleHighlight')}
           </span>
         </motion.h1>
 
@@ -122,8 +124,7 @@ export const Hero = () => {
           transition={{ delay: 0.2 }}
           className="text-xl text-gray-600 max-w-2xl mx-auto mb-10"
         >
-          Connectez-vous avec des infirmières qualifiées en quelques minutes.
-          Service professionnel, sécurisé et disponible 24/7.
+          {t('hero.subtitle')}
         </motion.p>
 
         <motion.div 
@@ -139,7 +140,7 @@ export const Hero = () => {
             className="px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2"
           >
             <Calendar className="w-5 h-5" />
-            Réserver Maintenant
+            {t('hero.bookNow')}
           </a>
           <a 
              href="/Healthcare_Access_On_Demand.pdf#zoom=40"
@@ -148,7 +149,7 @@ export const Hero = () => {
              className="px-8 py-4 bg-white border-2 border-navy-100 text-navy-800 font-bold rounded-2xl hover:border-navy-300 hover:shadow-lg transition-all flex items-center gap-2"
           >
             <FileText className="w-5 h-5" />
-            Pitch Deck
+            {t('hero.pitchDeck')}
           </a>
         </motion.div>
       </div>
@@ -169,10 +170,10 @@ export const Hero = () => {
                <Clock className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-navy-900 text-3xl mb-3 tracking-tight">
-              Liste d'Attente
+              {t('hero.waitlistTitle')}
             </h3>
             <p className="text-base text-gray-500 leading-relaxed max-w-[280px] mx-auto">
-              Soyez le premier averti et obtenez <strong className="text-blue-600">20% de rabais</strong> au lancement.
+              {t('hero.waitlistSubtitle')} <strong className="text-blue-600">{t('hero.waitlistDiscount')}</strong> {t('hero.waitlistDiscountSuffix')}
             </p>
           </div>
 
@@ -182,7 +183,7 @@ export const Hero = () => {
               <div className="absolute inset-0 bg-blue-100 rounded-2xl blur-md opacity-40 group-hover:opacity-60 transition-opacity"></div>
               <input 
                 type="email" 
-                placeholder="votre@email.com"
+                placeholder={t('hero.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={status === 'loading' || status === 'success'}
@@ -214,7 +215,7 @@ export const Hero = () => {
                   className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center gap-1.5 text-green-700 font-semibold text-xs"
                 >
                   <CheckCircle className="w-3.5 h-3.5" />
-                  <span>Inscrit !</span>
+                  <span>{t('hero.successMessage')}</span>
                 </motion.div>
               )}
               {status === 'error' && (
@@ -225,7 +226,7 @@ export const Hero = () => {
                   className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center gap-1.5 text-red-700 font-semibold text-xs"
                 >
                   <XCircle className="w-3.5 h-3.5" />
-                  <span>Erreur</span>
+                  <span>{t('hero.errorMessage')}</span>
                 </motion.div>
               )}
               {status === 'invalid' && (
@@ -236,7 +237,7 @@ export const Hero = () => {
                   className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-orange-50 border border-orange-100 flex items-center justify-center gap-1.5 text-orange-700 font-semibold text-xs"
                 >
                   <AlertCircle className="w-3.5 h-3.5" />
-                  <span>{errorMessage || 'Email invalide'}</span>
+                  <span>{errorMessage || t('hero.invalidEmail')}</span>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -253,7 +254,7 @@ export const Hero = () => {
              </div>
              <div className="text-left">
                 <div className="text-sm font-bold text-navy-900">+2,547</div>
-                <div className="text-xs font-medium text-gray-400">Personnes inscrites</div>
+                <div className="text-xs font-medium text-gray-400">{t('hero.personsRegistered')}</div>
              </div>
           </div>
         </motion.div>
@@ -291,12 +292,12 @@ export const Hero = () => {
                           <img src="/mobisoins-logo.jpeg" alt="MobiSoins" className="h-12 w-auto object-contain mix-blend-multiply" />
                       </div>
                       <h2 className="text-xl font-bold text-navy-900 text-center mb-6">
-                          C'est parti avec MobiSoins
+                          {t('hero.getStarted')}
                       </h2>
 
                       {/* Input */}
                       <div className="mb-4">
-                          <label className="text-xs font-medium text-gray-500 mb-1.5 block">Numéro de téléphone</label>
+                          <label className="text-xs font-medium text-gray-500 mb-1.5 block">{t('hero.phoneNumber')}</label>
                           <div className="bg-white border border-gray-200 rounded-xl p-3 flex items-center gap-2 shadow-sm">
                             <div className="w-6 h-4 bg-red-600 rounded-sm flex items-center justify-center text-white text-[8px] font-bold shadow-sm">ID</div>
                             <span className="text-sm font-medium text-navy-900">+62</span>
@@ -309,13 +310,13 @@ export const Hero = () => {
 
                       {/* Button */}
                       <button className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-semibold text-sm mb-4 shadow-lg shadow-blue-600/20 active:scale-95 transition-all">
-                          Continuer
+                          {t('hero.continueButton')}
                       </button>
 
                       {/* Divider */}
                       <div className="flex items-center gap-3 mb-4">
                           <div className="flex-1 h-px bg-gray-100"></div>
-                          <span className="text-[10px] text-gray-400 font-medium">OU</span>
+                          <span className="text-[10px] text-gray-400 font-medium">{t('hero.or')}</span>
                           <div className="flex-1 h-px bg-gray-100"></div>
                       </div>
 
@@ -323,15 +324,15 @@ export const Hero = () => {
                       <div className="space-y-2.5">
                           <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-navy-900 hover:bg-gray-100 transition-colors">
                             <span className="text-lg">🍎</span>
-                            Continuer avec Apple
+                            {t('hero.continueWithApple')}
                           </button>
                           <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-navy-900 hover:bg-gray-100 transition-colors">
                             <span className="text-lg text-blue-600">G</span>
-                            Continuer avec Google
+                            {t('hero.continueWithGoogle')}
                           </button>
                           <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-navy-900">
                             <Mail className="w-3 h-3 text-gray-500" />
-                            Continuer avec une adresse e-mail
+                            {t('hero.continueWithEmail')}
                           </button>
                       </div>
                     </div>
@@ -340,7 +341,7 @@ export const Hero = () => {
                     <div className="space-y-3 pb-4">
                        <button className="w-full flex items-center justify-center gap-2 text-xs text-blue-600 font-medium hover:text-blue-700">
                           <Search className="w-3 h-3" />
-                          Retrouver votre compte
+                          {t('hero.findAccount')}
                        </button>
                     </div>
                 </div>
@@ -363,7 +364,7 @@ export const Hero = () => {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-navy-900 leading-none">10K+</div>
-                  <div className="text-[10px] text-gray-500 font-medium mt-1">Patients Traités</div>
+                  <div className="text-[10px] text-gray-500 font-medium mt-1">{t('hero.patientsServed')}</div>
                 </div>
               </div>
             </motion.div>
@@ -375,7 +376,7 @@ export const Hero = () => {
               transition={{ delay: 0.7 }}
               className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-64 hover:shadow-xl transition-all duration-300"
             >
-              <div className="text-xs font-bold text-navy-900 mb-3 uppercase tracking-wide text-gray-400">Prochain Soin</div>
+              <div className="text-xs font-bold text-navy-900 mb-3 uppercase tracking-wide text-gray-400">{t('hero.nextAppointment')}</div>
               <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-2xl border border-gray-100">
                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-sm text-lg border border-gray-100">👩‍⚕️</div>
                  <div>
@@ -394,19 +395,19 @@ export const Hero = () => {
               transition={{ delay: 0.8 }}
               className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-60 hover:shadow-xl transition-all duration-300"
             >
-              <div className="text-xs font-bold text-navy-900 mb-3 uppercase tracking-wide text-gray-400">Highlights</div>
+              <div className="text-xs font-bold text-navy-900 mb-3 uppercase tracking-wide text-gray-400">{t('hero.highlights')}</div>
               <div className="space-y-2.5">
                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500">Satisfaction</span>
+                    <span className="text-gray-500">{t('hero.satisfaction')}</span>
                     <span className="font-bold text-navy-900 flex items-center gap-1"><Star className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 4.9/5</span>
                  </div>
                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500">Réseau</span>
-                    <span className="font-bold text-green-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> 500+ Inf.</span>
+                    <span className="text-gray-500">{t('hero.network')}</span>
+                    <span className="font-bold text-green-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> 500+ {t('hero.nurses')}</span>
                  </div>
                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500">Zone</span>
-                    <span className="font-bold text-navy-900">Québec</span>
+                    <span className="text-gray-500">{t('hero.zone')}</span>
+                    <span className="font-bold text-navy-900">{t('hero.quebec')}</span>
                  </div>
               </div>
             </motion.div>

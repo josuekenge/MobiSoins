@@ -4,11 +4,12 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<'FR' | 'EN'>('FR');
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,10 +20,10 @@ export const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Comment ça marche', href: '#how-it-works' },
-    { name: 'Fonctionnalités', href: '#features' },
-    { name: 'Services', href: '#services' },
-    { name: 'FAQ', href: '#faq' },
+    { name: t('header.howItWorks'), href: '#how-it-works' },
+    { name: t('header.features'), href: '#features' },
+    { name: t('header.services'), href: '#services' },
+    { name: t('header.faq'), href: '#faq' },
   ];
 
   return (
@@ -88,7 +89,7 @@ export const Header = () => {
             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-blue-600 text-white hover:shadow-lg transform hover:scale-105 transition-all"
           >
-            Télécharger l'App
+            {t('header.downloadApp')}
           </Button>
         </nav>
 
@@ -122,7 +123,7 @@ export const Header = () => {
             setIsMobileMenuOpen(false);
             document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
           }}>
-            Télécharger l'App
+            {t('header.downloadApp')}
           </Button>
         </motion.div>
       )}
