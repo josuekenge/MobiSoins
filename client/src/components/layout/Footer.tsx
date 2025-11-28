@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,10 +49,19 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold text-navy-900 text-lg mb-6">Légal</h4>
             <ul className="space-y-4 text-base text-gray-500">
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Confidentialité</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Conditions</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Cookies</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Contact</a></li>
+              <li><Link to="/confidentialite" className="hover:text-blue-600 transition-colors">Confidentialité</Link></li>
+              <li><Link to="/conditions" className="hover:text-blue-600 transition-colors">Conditions</Link></li>
+              <li><Link to="/cookies" className="hover:text-blue-600 transition-colors">Cookies</Link></li>
+              <li>
+                <a 
+                  href="https://calendly.com/mobisoins-info/30min" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
         </div>
