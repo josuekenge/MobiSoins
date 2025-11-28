@@ -12,10 +12,12 @@ export default defineConfig({
       viteCompression({
         algorithm: 'gzip',
         ext: '.gz',
+        threshold: 1024, // Only compress files > 1KB
       }),
       viteCompression({
         algorithm: 'brotliCompress',
         ext: '.br',
+        threshold: 1024,
       }),
     ] : []),
   ],
@@ -29,16 +31,25 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'motion-vendor': ['framer-motion'],
           'icons-vendor': ['lucide-react'],
+          'form-vendor': ['react-hook-form', 'zod'],
         },
       },
     },
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
-    // Enable minification (use esbuild for faster builds, terser for smaller output)
-    minify: 'esbuild', // Changed from terser to esbuild for better compatibility
+    // Enable minification with esbuild for speed
+    minify: 'esbuild',
+    // Target modern browsers for smaller bundles
+    target: 'es2015',
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Optimize dependencies
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
   },
   server: {
     open: true,
@@ -49,5 +60,9 @@ export default defineConfig({
         secure: false,
       },
     },
+  },
+  // Optimize dependencies pre-bundling
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'lucide-react'],
   },
 });

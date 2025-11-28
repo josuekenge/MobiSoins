@@ -11,11 +11,12 @@ const Trust = lazy(() => import('../components/sections/Trust').then(m => ({ def
 const Blog = lazy(() => import('../components/sections/Blog').then(m => ({ default: m.Blog })));
 const FAQ = lazy(() => import('../components/sections/FAQ').then(m => ({ default: m.FAQ })));
 const Newsletter = lazy(() => import('../components/sections/Newsletter').then(m => ({ default: m.Newsletter })));
+const WaitlistForm = lazy(() => import('../components/sections/WaitlistForm').then(m => ({ default: m.WaitlistForm })));
 
-// Loading placeholder
+// Minimal loading placeholder
 const SectionLoader = () => (
-  <div className="w-full h-32 flex items-center justify-center">
-    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  <div className="w-full h-24 flex items-center justify-center">
+    <div className="w-6 h-6 border-3 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
@@ -46,6 +47,9 @@ const LandingPage: React.FC = () => {
         <Suspense fallback={<SectionLoader />}>
           <Newsletter />
         </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <WaitlistForm />
+        </Suspense>
       </main>
       <Footer />
     </div>
@@ -53,4 +57,3 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
-

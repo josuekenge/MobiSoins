@@ -15,6 +15,7 @@ export const Footer = () => {
                 src="/mobisoins-logo.jpeg" 
                 alt="MobiSoins Logo" 
                 className="h-32 w-auto object-contain mix-blend-multiply"
+                loading="lazy"
               />
             </div>
             <p className="text-gray-500 text-base leading-relaxed max-w-xs mb-6">

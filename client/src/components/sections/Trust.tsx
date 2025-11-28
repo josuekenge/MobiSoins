@@ -102,7 +102,7 @@ export const Trust = () => {
               
               <div className="flex items-center justify-between pt-6 border-t border-gray-50">
                 <div className="flex items-center gap-3">
-                  <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover" />
+                  <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover" loading="lazy" />
                   <div>
                     <div className="font-bold text-navy-900 text-sm">{t.author}</div>
                     <div className="text-xs text-blue-500">{t.handle}</div>

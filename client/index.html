@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Preconnect to external domains for faster loading -->
-    <link rel="preconnect" href="https://api.web3forms.com" />
-    <link rel="preconnect" href="https://calendly.com" />
-    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://api.web3forms.com" crossorigin />
+    <link rel="preconnect" href="https://calendly.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://i.pravatar.cc" />
     <link rel="dns-prefetch" href="https://placehold.co" />
     
     <!-- Preload critical assets -->
-    <link rel="preload" href="/mobisoins-logo.jpeg" as="image" />
+    <link rel="preload" href="/mobisoins-logo.jpeg" as="image" fetchpriority="high" />
+    
+    <!-- Performance optimization meta tags -->
+    <meta name="theme-color" content="#003366" />
     
     <title>MobiSoins - Soins Infirmiers à Domicile au Québec</title>
     <meta name="description" content="MobiSoins connecte des infirmières qualifiées avec des patients pour des soins à domicile au Québec. Réservez en ligne, service 24/7." />

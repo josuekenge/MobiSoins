@@ -130,7 +130,7 @@ export const Features = () => {
                 {/* Header */}
                 <div className="bg-white pb-4 pt-12 px-6 rounded-b-3xl shadow-sm z-10">
                    <div className="flex justify-center mb-4">
-                     <img src="/mobisoins-logo.jpeg" alt="Logo" className="h-6 w-auto" />
+                     <img src="/mobisoins-logo.jpeg" alt="Logo" className="h-6 w-auto" loading="lazy" />
                    </div>
                    
                    {/* Search Bar */}
@@ -238,6 +238,7 @@ export const Features = () => {
                     src="/mobisoins-logo.jpeg" 
                     alt="MobiSoins Logo" 
                     className="w-64 h-auto object-contain mix-blend-multiply"
+                    loading="lazy"
                   />
                 </motion.div>
               </div>
