@@ -52,6 +52,7 @@ const translations = {
       services: 'Services',
       faq: 'FAQ',
       downloadApp: 'Télécharger l\'App',
+      recruitment: 'Recrutement',
     },
     hero: {
       availableInQuebec: 'Disponible au Québec',
@@ -235,6 +236,7 @@ const translations = {
       services: 'Services',
       faq: 'FAQ',
       downloadApp: 'Download App',
+      recruitment: 'Recruitment',
     },
     hero: {
       availableInQuebec: 'Available in Quebec',

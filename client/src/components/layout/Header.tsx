@@ -68,7 +68,7 @@ export const Header = () => {
             rel="noopener noreferrer"
             className="relative text-sm font-medium text-gray-700 hover:text-navy-800 transition-colors group"
           >
-            Recruitment
+            {t('header.recruitment')}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
           </a>
           
@@ -139,7 +139,7 @@ export const Header = () => {
             className="text-base font-medium text-gray-700 hover:text-navy-800 py-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Recruitment
+            {t('header.recruitment')}
           </a>
           
           <Button className="w-full" onClick={() => {
