@@ -30,7 +30,7 @@ export const Header = () => {
     <header
       className={clsx(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-6'
+        isScrolled ? 'bg-white/70 backdrop-blur-lg shadow-sm py-3' : 'bg-transparent py-6'
       )}
     >
       <div className="container mx-auto px-6 lg:px-16 flex items-center justify-between">
@@ -38,7 +38,7 @@ export const Header = () => {
           <motion.img 
             src="/mobisoins-logo.jpeg" 
             alt="MobiSoins Logo" 
-            className="h-[110px] md:h-[130px] w-auto object-contain mix-blend-multiply"
+            className="h-[85px] md:h-[110px] w-auto object-contain mix-blend-multiply"
             style={{
               objectFit: 'contain',
             }}
