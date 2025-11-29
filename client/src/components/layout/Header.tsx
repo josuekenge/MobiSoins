@@ -61,6 +61,17 @@ export const Header = () => {
             </a>
           ))}
           
+          {/* Recruitment Link */}
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd_4xRpjxg-Yml0oJYwec5elHmVFI80Qfibk9HYGZMMnCREBg/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative text-sm font-medium text-gray-700 hover:text-navy-800 transition-colors group"
+          >
+            Recruitment
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full" />
+          </a>
+          
           {/* Language Toggle */}
           <div className="flex items-center gap-1 bg-gray-100 rounded-full p-1">
             <button
@@ -119,6 +130,18 @@ export const Header = () => {
               {link.name}
             </a>
           ))}
+          
+          {/* Recruitment Link - Mobile */}
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSd_4xRpjxg-Yml0oJYwec5elHmVFI80Qfibk9HYGZMMnCREBg/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-base font-medium text-gray-700 hover:text-navy-800 py-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Recruitment
+          </a>
+          
           <Button className="w-full" onClick={() => {
             setIsMobileMenuOpen(false);
             document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
