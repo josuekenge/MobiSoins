@@ -51,28 +51,21 @@ export const FAQ = () => {
   );
 
   return (
-    <section id="faq" className="py-20 bg-white relative overflow-hidden">
-      {/* Gradient Blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[10%] right-0 w-[50%] h-[50%] bg-blue-100/30 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute bottom-[10%] left-0 w-[50%] h-[50%] bg-blue-100/30 rounded-full blur-3xl opacity-50"></div>
-      </div>
-
-      <div className="container mx-auto px-6 max-w-4xl relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-navy-900 mb-4">
+    <section id="faq" className="py-16 bg-white/[0.82]">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight mb-3" style={{ color: '#1a1a24', letterSpacing: '-0.03em' }}>
             {t('faq.title')}
           </h2>
-          <p className="text-gray-600 text-lg mb-8">
+          <p className="font-light text-lg mb-6" style={{ color: '#5a5a6a' }}>
             {t('faq.subtitle')}
           </p>
-          
-          <div className="relative max-w-md mx-auto">
+          <div className="relative max-w-md">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
               type="text"
               placeholder={t('faq.searchPlaceholder')}
-              className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-gray-200 focus:border-navy-600 focus:ring-2 focus:ring-navy-100 outline-none transition-all shadow-sm bg-white"
+              className="w-full pl-12 pr-4 py-3.5 rounded-full border border-black/12 focus:border-slate-400 focus:ring-1 focus:ring-slate-200 outline-none transition-all bg-white/70 backdrop-blur-sm"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -88,17 +81,17 @@ export const FAQ = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-xl border-2 border-gray-100 overflow-hidden shadow-sm hover:border-navy-200 hover:shadow-md transition-all"
+                className="bg-white/60 backdrop-blur-sm rounded-2xl border border-black/12/60 overflow-hidden hover:border-slate-300 transition-all duration-200"
               >
                 <button
-                  className="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none hover:bg-gray-50 transition-colors"
+                  className="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none hover:bg-white/80 transition-colors"
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 >
-                  <span className="font-bold text-navy-900 text-lg pr-4">{faq.question}</span>
+                  <span className="font-semibold text-base pr-4" style={{ color: '#1a1a24' }}>{faq.question}</span>
                   {openIndex === index ? (
-                    <ChevronUp className="h-5 w-5 text-navy-600 flex-shrink-0" />
+                    <ChevronUp className="h-4 w-4 text-slate-400 flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                    <ChevronDown className="h-4 w-4 text-slate-400 flex-shrink-0" />
                   )}
                 </button>
                 <motion.div

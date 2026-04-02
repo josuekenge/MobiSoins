@@ -8,7 +8,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 const RawInput = ({ className = '', ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
-    className={`flex h-10 w-full rounded-xl border border-slate-200/80 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm text-slate-800 placeholder:text-slate-400 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:border-slate-300 focus-visible:bg-white/80 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+    className={`flex h-10 w-full rounded-xl border border-black/12/80 bg-white/60 backdrop-blur-sm px-4 py-2 text-sm text-slate-800 placeholder:text-slate-400 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:border-slate-300 focus-visible:bg-white/80 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     {...props}
   />
 );
@@ -56,7 +56,7 @@ export const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-32" style={{ background: '#f7f9fa' }}>
+    <section id="contact" className="py-32" style={{ background: 'rgba(255,255,255,0.82)' }}>
       <div className="container-custom">
         <div className="mx-auto flex max-w-screen-xl flex-col justify-between gap-12 lg:flex-row lg:gap-20">
 
@@ -115,7 +115,7 @@ export const Contact = () => {
           >
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-6 rounded-[2rem] border border-white/60 bg-white/40 backdrop-blur-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"
+              className="flex flex-col gap-6 rounded-[2rem] border border-black/12 bg-white/40 backdrop-blur-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"
             >
               {/* Name row */}
               <div className="flex flex-col sm:flex-row gap-4">

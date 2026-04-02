@@ -46,7 +46,7 @@ export const Hero = () => {
   return (
     <section
       className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden"
-      style={{ background: '#f7f9fa' }}
+      style={{ background: 'rgba(255,255,255,0.82)' }}
     >
       {/* Subtle ambient glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -101,7 +101,7 @@ export const Hero = () => {
                 href="/Healthcare_Access_On_Demand.pdf#zoom=40"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-4 rounded-full font-medium text-slate-700 bg-white/40 border border-white/60 backdrop-blur-xl hover:bg-white/60 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-4 rounded-full font-medium text-slate-700 bg-white/40 border border-black/12 backdrop-blur-xl hover:bg-white/60 transition-all duration-300"
                 style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)' }}
               >
                 <FileText className="w-4 h-4" />
@@ -191,7 +191,7 @@ export const Hero = () => {
 
               {/* Screen */}
               <div
-                className="absolute inset-x-[10px] top-[10px] bottom-[10px] bg-[#f8f9fb] rounded-[3.25rem] overflow-hidden flex flex-col z-10 border border-slate-200/70"
+                className="absolute inset-x-[10px] top-[10px] bottom-[10px] bg-[#f8f9fb] rounded-[3.25rem] overflow-hidden flex flex-col z-10 border border-black/12"
                 style={{ boxShadow: 'inset 0 0 20px rgba(15,23,42,0.06)' }}
               >
                 {/* Dynamic Island */}
@@ -230,7 +230,7 @@ export const Hero = () => {
 
                   {/* Disponibilité card */}
                   <div
-                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex items-center justify-between border border-slate-100/80 transition-all duration-500 hover:-translate-y-1"
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex items-center justify-between border border-black/10 transition-all duration-500 hover:-translate-y-1"
                     style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
                   >
                     <div className="flex flex-col gap-1">
@@ -254,7 +254,7 @@ export const Hero = () => {
 
                   {/* Soins actifs chart */}
                   <div
-                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex flex-col border border-slate-100/80 h-[168px] relative overflow-hidden"
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex flex-col border border-black/10 h-[168px] relative overflow-hidden"
                     style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
                   >
                     <div className="flex justify-between items-center mb-2 z-10">
@@ -277,7 +277,7 @@ export const Hero = () => {
                           style={{ height: `${h}%` }}
                         >
                           {i === 6 && (
-                            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-emerald-500 border border-white" />
+                            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-emerald-500 border border-black/12" />
                           )}
                         </div>
                       ))}
@@ -286,7 +286,7 @@ export const Hero = () => {
 
                   {/* Matching IA */}
                   <div
-                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-slate-100/80 flex flex-col justify-between relative overflow-hidden min-h-[80px] flex-1"
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-black/10 flex flex-col justify-between relative overflow-hidden min-h-[80px] flex-1"
                     style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
                   >
                     <div className="flex items-center justify-between z-10">
@@ -321,7 +321,7 @@ export const Hero = () => {
               className="hidden xl:flex absolute right-0 top-[20%] flex-col gap-2 w-48"
               style={{ animation: 'float 7s ease-in-out infinite 0.8s' }}
             >
-              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100/80">
+              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-black/10">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -334,9 +334,9 @@ export const Hero = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100/80">
+              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-black/10">
                 <div className="text-[10px] font-semibold text-slate-400 mb-2 uppercase tracking-wide">Prochain soin</div>
-                <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-xl border border-slate-100">
+                <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-xl border border-black/8">
                   <div className="text-xl">👩‍⚕️</div>
                   <div>
                     <div className="text-xs font-bold text-slate-800">Inf. Sarah</div>

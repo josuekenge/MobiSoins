@@ -7,7 +7,7 @@ export const Newsletter = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-32" style={{ background: '#f7f9fa' }}>
+    <section className="py-20" style={{ background: 'rgba(255,255,255,0.82)' }}>
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

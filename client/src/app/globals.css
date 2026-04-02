@@ -105,17 +105,17 @@
 
 @layer components {
   .glass-panel {
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.7);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255,255,255,0.6);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.13);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     border-radius: 2rem;
   }
   .glass-panel:hover {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.82);
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
   }
   .container-custom {
@@ -148,3 +148,50 @@
     box-shadow: 0 25px 45px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255,255,255,0.8);
   }
 }
+
+/* ── Nursing Dispatch Map animations ── */
+.nmap-car {
+  offset-anchor: 10px 0px;
+  animation: nmap-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
+}
+.nmap-line-1 { offset-path: path("M 10 20 h 79.5 q 5 0 5 5 v 30"); animation-duration: 5s; animation-delay: 1s; }
+.nmap-line-2 { offset-path: path("M 180 10 h -69.7 q -5 0 -5 5 v 40"); animation-delay: 6s; animation-duration: 2s; }
+.nmap-line-3 { offset-path: path("M 130 20 v 21.8 q 0 5 -5 5 h -25"); animation-delay: 4s; animation-duration: 6s; }
+.nmap-line-4 { offset-path: path("M 170 80 v -21.8 q 0 -5 -5 -5 h -65"); animation-delay: 3s; animation-duration: 3s; }
+.nmap-line-5 { offset-path: path("M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -35"); animation-delay: 9s; animation-duration: 4s; }
+.nmap-line-6 { offset-path: path("M 94.8 95 v -46"); animation-delay: 3s; animation-duration: 7s; }
+.nmap-line-7 { offset-path: path("M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 28"); animation-delay: 4s; animation-duration: 4s; }
+.nmap-line-8 { offset-path: path("M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 35"); animation-delay: 3s; animation-duration: 3s; }
+@keyframes nmap-animation-path { 0% { offset-distance: 0%; } 100% { offset-distance: 100%; } }
+
+/* ── GPS Map animations ── */
+.gpsmap-car {
+  offset-anchor: center;
+  animation-name: gpsmap-move;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.gpsmap-reverse { animation-direction: reverse; }
+
+/* Route paths — home → hub */
+.gpsmap-route-a { offset-path: path("M 40 60 V 100 H 150 V 160");            animation-duration: 4s; }
+.gpsmap-route-b { offset-path: path("M 330 50 H 280 V 100 H 150 V 160");     animation-duration: 5.5s; }
+.gpsmap-route-c { offset-path: path("M 50 230 H 150 V 160");                 animation-duration: 3.2s; }
+.gpsmap-route-d { offset-path: path("M 310 230 H 280 V 200 H 150 V 160");    animation-duration: 4.8s; }
+.gpsmap-route-e { offset-path: path("M 200 40 V 100 H 150 V 160");           animation-duration: 3.6s; }
+
+/* Staggered delay helpers */
+.gpsmap-d0  { animation-delay: 0s;    }
+.gpsmap-d05 { animation-delay: 0.5s;  }
+.gpsmap-d1  { animation-delay: 1s;    }
+.gpsmap-d15 { animation-delay: 1.5s;  }
+.gpsmap-d2  { animation-delay: 2s;    }
+.gpsmap-d25 { animation-delay: 2.5s;  }
+.gpsmap-d3  { animation-delay: 3s;    }
+.gpsmap-d35 { animation-delay: 3.5s;  }
+.gpsmap-d4  { animation-delay: 4s;    }
+.gpsmap-d45 { animation-delay: 4.5s;  }
+
+@keyframes gpsmap-move { 0% { offset-distance: 0%; } 100% { offset-distance: 100%; } }

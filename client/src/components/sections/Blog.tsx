@@ -1,102 +1,209 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export const Blog = () => {
   const { t } = useLanguage();
-  
+
   const articles = [
     {
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       tags: [t('blog.article1Tag1'), t('blog.article1Tag2')],
       title: t('blog.article1Title'),
       description: t('blog.article1Description'),
-      link: "https://www.placessenior.com/blog/conseils-places-senior/les-avantages-des-soins-domicile"
+      readTime: '5 min',
+      link: 'https://www.placessenior.com/blog/conseils-places-senior/les-avantages-des-soins-domicile',
+      featured: true,
     },
     {
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       tags: [t('blog.article2Tag1'), t('blog.article2Tag2')],
       title: t('blog.article2Title'),
       description: t('blog.article2Description'),
-      link: "https://www150.statcan.gc.ca/n1/daily-quotidien/220826/dq220826a-fra.htm"
+      readTime: '4 min',
+      link: 'https://www150.statcan.gc.ca/n1/daily-quotidien/220826/dq220826a-fra.htm',
+      featured: false,
     },
     {
-      image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       tags: [t('blog.article3Tag1'), t('blog.article3Tag2')],
       title: t('blog.article3Title'),
       description: t('blog.article3Description'),
-      link: "https://www.oiiq.org/documents/20147/1456160/1478-reflexion-soutien-aines-domicile-web.pdf"
-    }
+      readTime: '6 min',
+      link: 'https://www.oiiq.org/documents/20147/1456160/1478-reflexion-soutien-aines-domicile-web.pdf',
+      featured: false,
+    },
   ];
 
+  const [featured, ...rest] = articles;
+
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Gradient Blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-[10%] w-[70%] h-[70%] bg-blue-50/30 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute bottom-0 right-[10%] w-[70%] h-[70%] bg-blue-50/40 rounded-full blur-3xl opacity-50"></div>
-      </div>
+    <section className="py-16" style={{ background: 'rgba(255,255,255,0.82)' }}>
+      <div className="container-custom">
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="mb-16">
-          <span className="text-blue-600 font-semibold mb-2 block">{t('blog.badge')}</span>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <h2 className="text-4xl font-bold text-navy-900">{t('blog.title')}</h2>
-            <p className="text-gray-500 max-w-lg">
-              {t('blog.subtitle')}
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10"
+        >
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#4e6645' }}>
+              {t('blog.badge') || 'Ressources'}
             </p>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
-            <a 
-              key={index} 
-              href={article.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group cursor-pointer block"
+            <h2
+              className="text-3xl md:text-4xl font-semibold tracking-tight"
+              style={{ color: '#1a1a24', letterSpacing: '-0.03em' }}
             >
-              {/* Image Container */}
-              <div className="rounded-3xl overflow-hidden mb-6 h-64 relative">
-                <img 
-                  src={article.image} 
-                  alt={article.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
+              {t('blog.title')}
+            </h2>
+          </div>
+          <p className="text-sm font-light max-w-xs text-right hidden md:block" style={{ color: '#94a3b8' }}>
+            {t('blog.subtitle')}
+          </p>
+        </motion.div>
+
+        {/* Bento grid */}
+        <div className="grid md:grid-cols-5 gap-4">
+
+          {/* Featured — large card, left 3 cols */}
+          <motion.a
+            href={featured.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="group md:col-span-3 relative rounded-2xl overflow-hidden block"
+            style={{ minHeight: '380px' }}
+          >
+            {/* Full-bleed image */}
+            <img
+              src={featured.image}
+              alt={featured.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            {/* Gradient overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(to top, rgba(10,10,18,0.88) 0%, rgba(10,10,18,0.35) 55%, transparent 100%)',
+              }}
+            />
+            {/* Content pinned to bottom */}
+            <div className="absolute inset-0 flex flex-col justify-between p-7">
+              {/* Top: tags + read time */}
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2">
+                  {featured.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold backdrop-blur-md"
+                      style={{ background: 'rgba(255,255,255,0.15)', color: '#fff' }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <span className="text-[11px] font-medium" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                  {featured.readTime} lecture
+                </span>
               </div>
 
-              {/* Tags */}
-              <div className="flex gap-2 mb-4">
-                {article.tags.map((tag, i) => (
-                  <span key={i} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-medium">
-                    {tag}
-                  </span>
-                ))}
+              {/* Bottom: title + arrow */}
+              <div>
+                <h3
+                  className="text-xl md:text-2xl font-semibold leading-snug mb-3 text-white tracking-tight"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  {featured.title}
+                </h3>
+                <p className="text-sm font-light mb-4 line-clamp-2" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  {featured.description}
+                </p>
+                <div
+                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest transition-all duration-300 group-hover:gap-3"
+                  style={{ color: '#98B690' }}
+                >
+                  {t('blog.readMore')}
+                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
               </div>
+            </div>
+          </motion.a>
 
-              {/* Content */}
-              <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-blue-600 transition-colors">
-                {article.title}
-              </h3>
-              <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-                {article.description}
-              </p>
+          {/* Two smaller cards — right 2 cols */}
+          <div className="md:col-span-2 flex flex-col gap-4">
+            {rest.map((article, i) => (
+              <motion.a
+                key={i}
+                href={article.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.55, ease: 'easeOut' }}
+                className="group flex flex-col rounded-2xl overflow-hidden border flex-1"
+                style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#fff' }}
+              >
+                {/* Image */}
+                <div className="relative overflow-hidden" style={{ height: '140px' }}>
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Subtle top-right arrow badge on hover */}
+                  <div
+                    className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0"
+                    style={{ background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)' }}
+                  >
+                    <ArrowUpRight className="w-4 h-4" style={{ color: '#1a1a24' }} />
+                  </div>
+                </div>
 
-              {/* Link */}
-              <div className="inline-flex items-center gap-2 text-navy-900 font-semibold text-sm border border-gray-200 rounded-full px-4 py-2 transition-all group-hover:border-blue-600 group-hover:text-blue-600">
-                {t('blog.readMore')}
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </a>
-          ))}
+                {/* Content */}
+                <div className="flex flex-col flex-1 p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex gap-1.5">
+                      {article.tags.map((tag, j) => (
+                        <span
+                          key={j}
+                          className="px-2 py-0.5 rounded-full text-[11px] font-medium"
+                          style={{ background: 'rgba(78,102,69,0.08)', color: '#4e6645' }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="text-[11px]" style={{ color: '#94a3b8' }}>
+                      {article.readTime}
+                    </span>
+                  </div>
+                  <h3
+                    className="text-sm font-semibold leading-snug mb-2 transition-colors duration-200 group-hover:opacity-60"
+                    style={{ color: '#1a1a24' }}
+                  >
+                    {article.title}
+                  </h3>
+                  <p className="text-xs font-light leading-relaxed line-clamp-2 mt-auto" style={{ color: '#94a3b8' }}>
+                    {article.description}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
   );
 };
-
-
-

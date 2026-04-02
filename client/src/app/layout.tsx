@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { LanguageProvider } from '../contexts/LanguageContext';
+import { DottedSurface } from '../components/ui/dotted-surface';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -50,7 +51,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://i.pravatar.cc" />
         <link rel="dns-prefetch" href="https://placehold.co" />
       </head>
-      <body>
+      <body style={{ background: '#ffffff' }}>
+        <DottedSurface />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

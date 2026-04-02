@@ -30,14 +30,6 @@ const Trust = dynamic(
   () => import('../components/sections/Trust').then((m) => ({ default: m.Trust })),
   { loading: () => <SectionLoader /> }
 );
-const Pricing = dynamic(
-  () => import('../components/sections/Pricing').then((m) => ({ default: m.Pricing })),
-  { loading: () => <SectionLoader /> }
-);
-const Blog = dynamic(
-  () => import('../components/sections/Blog').then((m) => ({ default: m.Blog })),
-  { loading: () => <SectionLoader /> }
-);
 const FAQ = dynamic(
   () => import('../components/sections/FAQ').then((m) => ({ default: m.FAQ })),
   { loading: () => <SectionLoader /> }
@@ -58,22 +50,25 @@ const Contact = dynamic(
   () => import('../components/sections/Contact').then((m) => ({ default: m.Contact })),
   { loading: () => <SectionLoader /> }
 );
+const NursingMapSection = dynamic(
+  () => import('../components/sections/NursingMapSection').then((m) => ({ default: m.NursingMapSection })),
+  { loading: () => <SectionLoader /> }
+);
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: '#f7f9fa' }}>
+    <div className="min-h-screen flex flex-col" style={{ background: 'transparent', backdropFilter: 'none' }}>
       <Header />
       <main className="flex-grow">
         <Hero />
         <LogoCloud />
         <Stats />
         <HowItWorks />
+        <NursingMapSection />
         <Features />
         <Services />
         <Trust />
         <Pillars />
-        <Pricing />
-        <Blog />
         <FAQ />
         <Contact />
         <Newsletter />

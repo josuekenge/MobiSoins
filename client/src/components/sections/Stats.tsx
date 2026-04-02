@@ -15,7 +15,7 @@ export const Stats = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 border-y border-slate-200/40" style={{ background: '#f7f9fa' }}>
+    <section className="py-16" style={{ background: 'rgba(255,255,255,0.82)' }}>
       <div className="container-custom">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4">
           {stats.map((stat, i) => (

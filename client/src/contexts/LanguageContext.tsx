@@ -26,7 +26,12 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('FR');
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      return navigator.language.startsWith('fr') ? 'FR' : 'EN';
+    }
+    return 'FR';
+  });
 
   const t = (key: string): string => {
     const keys = key.split('.');
@@ -141,6 +146,38 @@ const translations = {
         title: 'Suivi Clinique 24/7',
         description: 'Accès continu à votre historique de soins, vos rapports cliniques et l\'évolution de votre état de santé. Partagez facilement avec votre médecin.',
       },
+      gpsLabel: 'Suivi GPS en temps réel',
+      gpsTitle: 'Suivi en Temps Réel — localisez votre infirmière à chaque instant.',
+      quebecLabel: 'Québec, Canada',
+      activeNurses: '12 infirmières actives en ce moment',
+      messagingLabel: 'Messagerie patient–infirmière',
+      messagingTitle: 'Communication directe, instantanée, sécurisée.',
+      chat: {
+        patient: 'Bonjour, j\'ai besoin d\'une infirmière pour un pansement ce soir.',
+        system: 'Correspondance trouvée — Sarah B., inf. OIIQ · 8 min de chez vous.',
+        nurse: 'Bonjour ! Je suis en route, j\'arrive vers 18h45.',
+        patientTime: 'Il y a 2 min',
+        nurseTime: 'Maintenant',
+      },
+      stat: {
+        matchTime: '< 2 min',
+        matchLabel: 'Correspondance IA',
+        satisfactionLabel: 'Taux de satisfaction',
+        availabilityLabel: 'Disponibilité',
+      },
+      activity: {
+        label: 'Activité de la plateforme',
+        title: 'Croissance continue.',
+        subtitle: 'Suivi en temps réel de chaque soin.',
+      },
+    },
+    map: {
+      badge: 'Dispatch en temps réel',
+      title: 'Des soins à domicile en quelques minutes',
+      description: 'Notre algorithme de dispatch connecte automatiquement chaque patient à l\'infirmière disponible la plus proche, certifiée OIIQ.',
+      bullet1: 'Matching en moins de 60 secondes',
+      bullet2: 'Infirmières certifiées OIIQ vérifiées',
+      bullet3: 'Suivi GPS en temps réel',
     },
     services: {
       badge: 'Nos Avantages',
@@ -164,6 +201,11 @@ const translations = {
       card3Badge: 'Suivi Clinique',
       card3Title: 'Visualisez vos progrès',
       card3Description: 'Des graphiques clairs et détaillés pour suivre l\'évolution de votre santé et partager vos rapports facilement.',
+      mapBadge: 'Disponible à travers le Québec',
+      bannerTitle: 'Soins à domicile partout',
+      bannerTitleHighlight: 'au Québec.',
+      bannerDescription: 'Infirmières certifiées OIIQ disponibles à Montréal, Québec, Laval, Longueuil, Sherbrooke, Gatineau et partout en province.',
+      bannerCta: 'Rejoindre la liste d\'attente',
     },
     trust: {
       badge: 'Témoignages',
@@ -396,6 +438,38 @@ const translations = {
         title: '24/7 Clinical Monitoring',
         description: 'Continuous access to your care history, clinical reports, and health evolution tracking. Easily share with your physician.',
       },
+      gpsLabel: 'Real-Time GPS Tracking',
+      gpsTitle: 'Real-Time Tracking — locate your nurse at every moment.',
+      quebecLabel: 'Quebec, Canada',
+      activeNurses: '12 nurses active right now',
+      messagingLabel: 'Patient–nurse messaging',
+      messagingTitle: 'Direct, instant, secure communication.',
+      chat: {
+        patient: 'Hello, I need a nurse for a dressing change tonight.',
+        system: 'Match found — Sarah B., OIIQ nurse · 8 min from you.',
+        nurse: 'Hello! I\'m on my way, arriving around 6:45 PM.',
+        patientTime: '2 min ago',
+        nurseTime: 'Now',
+      },
+      stat: {
+        matchTime: '< 2 min',
+        matchLabel: 'AI Matching',
+        satisfactionLabel: 'Satisfaction rate',
+        availabilityLabel: 'Availability',
+      },
+      activity: {
+        label: 'Platform activity',
+        title: 'Continuous growth.',
+        subtitle: 'Real-time tracking of every care session.',
+      },
+    },
+    map: {
+      badge: 'Real-time dispatch',
+      title: 'Home care in just minutes',
+      description: 'Our dispatch algorithm automatically connects each patient to the nearest available OIIQ-certified nurse.',
+      bullet1: 'Matching in under 60 seconds',
+      bullet2: 'Verified OIIQ-certified nurses',
+      bullet3: 'Real-time GPS tracking',
     },
     services: {
       badge: 'Our Advantages',
@@ -419,6 +493,11 @@ const translations = {
       card3Badge: 'Clinical Tracking',
       card3Title: 'Visualize your progress',
       card3Description: 'Clear and detailed charts to track your health evolution and easily share your reports.',
+      mapBadge: 'Available across Quebec',
+      bannerTitle: 'Home care everywhere',
+      bannerTitleHighlight: 'in Quebec.',
+      bannerDescription: 'OIIQ-certified nurses available in Montreal, Quebec City, Laval, Longueuil, Sherbrooke, Gatineau and throughout the province.',
+      bannerCta: 'Join the waiting list',
     },
     trust: {
       badge: 'Testimonials',
