@@ -16,7 +16,9 @@
       "Bash(npx create-video@latest video --yes)",
       "Bash(npx create-video@latest video --yes --blank)",
       "Bash(npx remotion:*)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(npx next:*)",
+      "Bash(./node_modules/.bin/next build:*)"
     ]
   }
 }
