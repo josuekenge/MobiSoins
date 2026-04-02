@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, TrendingUp, DollarSign, Clock, Shield, Users } from 'lucide-react';
 import { Button } from '../ui/Button';

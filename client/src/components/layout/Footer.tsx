@@ -1,90 +1,91 @@
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+
+const links: Record<string, { label: string; href: string }[]> = {
+  Product: [
+    { label: 'Pour les patients', href: '#services' },
+    { label: 'Pour les infirmières', href: 'https://docs.google.com/forms/d/e/1FAIpQLSd_4xRpjxg-Yml0oJYwec5elHmVFI80Qfibk9HYGZMMnCREBg/viewform' },
+    { label: 'Tarification', href: '#pricing' },
+    { label: 'Sécurité', href: '#' },
+  ],
+  Resources: [
+    { label: 'Blog', href: '#blog' },
+    { label: 'FAQ', href: '#faq' },
+    { label: 'Documentation', href: '#' },
+  ],
+  Company: [
+    { label: 'À propos', href: '#' },
+    { label: 'Carrières', href: '#' },
+    { label: 'Contact', href: '#' },
+    { label: 'Presse', href: '#' },
+  ],
+};
 
 export const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-white pt-20 pb-10">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
-          
-          {/* Brand Column */}
-          <div className="col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <img 
-                src="/mobisoins-logo.jpeg" 
-                alt="MobiSoins Logo" 
-                className="h-32 w-auto object-contain mix-blend-multiply"
-                loading="lazy"
-              />
-            </div>
-            <p className="text-gray-500 text-base leading-relaxed max-w-xs mb-6">
-              MobiSoins révolutionne l'accès aux soins de santé à domicile au Québec. 
-              Simple, rapide et humain.
+    <footer className="pt-24 pb-12 border-t border-slate-200/30" style={{ background: '#f7f9fa' }}>
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <img
+              src="/mobisoins-logo.jpeg"
+              alt="MobiSoins"
+              className="h-12 w-auto object-contain mix-blend-multiply mb-4"
+            />
+            <p className="text-sm font-light leading-relaxed max-w-xs" style={{ color: '#5a5a6a' }}>
+              Une plateforme IA de soins infirmiers à domicile au Québec. Connecte des infirmières OIIQ avec des patients en quelques minutes.
             </p>
           </div>
-
-          {/* Links Columns */}
-          <div>
-            <h4 className="font-bold text-navy-900 text-lg mb-6">MobiSoins</h4>
-            <ul className="space-y-4 text-base text-gray-500">
-              <li><a href="#" className="hover:text-blue-600 transition-colors">À Propos</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Carrières</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Presse</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Blog</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-navy-900 text-lg mb-6">Produit</h4>
-            <ul className="space-y-4 text-base text-gray-500">
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Pour Patients</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Pour Infirmières</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Tarification</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Sécurité</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-navy-900 text-lg mb-6">Légal</h4>
-            <ul className="space-y-4 text-base text-gray-500">
-              <li><Link to="/confidentialite" className="hover:text-blue-600 transition-colors">Confidentialité</Link></li>
-              <li><Link to="/conditions" className="hover:text-blue-600 transition-colors">Conditions</Link></li>
-              <li><Link to="/cookies" className="hover:text-blue-600 transition-colors">Cookies</Link></li>
-              <li>
-                <a 
-                  href="https://calendly.com/mobisoins-info/30min" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Link columns */}
+          {Object.entries(links).map(([section, items]) => (
+            <div key={section}>
+              <h4 className="text-sm font-semibold text-slate-800 mb-5">{section}</h4>
+              <ul className="space-y-3">
+                {items.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="text-sm font-light transition-colors hover:text-slate-800"
+                      style={{ color: '#5a5a6a' }}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-base text-gray-400">
-            © {currentYear} MobiSoins Inc. Tous droits réservés.
+        {/* Bottom bar */}
+        <div className="border-t border-slate-200/50 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm font-light" style={{ color: '#5a5a6a' }}>
+            &copy; 2024 MobiSoins Inc. Tous droits réservés.
           </p>
-          
           <div className="flex items-center gap-4">
-            <a href="#" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-50 hover:text-blue-600 transition-all">
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-50 hover:text-blue-600 transition-all">
-              <Twitter className="w-4 h-4" />
-            </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-50 hover:text-blue-600 transition-all">
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-blue-50 hover:text-blue-600 transition-all">
-              <Linkedin className="w-4 h-4" />
-            </a>
+            <Link
+              href="/confidentialite"
+              className="text-sm font-light hover:text-slate-800 transition-colors"
+              style={{ color: '#5a5a6a' }}
+            >
+              Confidentialité
+            </Link>
+            <Link
+              href="/conditions"
+              className="text-sm font-light hover:text-slate-800 transition-colors"
+              style={{ color: '#5a5a6a' }}
+            >
+              Conditions
+            </Link>
+            <Link
+              href="/cookies"
+              className="text-sm font-light hover:text-slate-800 transition-colors"
+              style={{ color: '#5a5a6a' }}
+            >
+              Cookies
+            </Link>
           </div>
         </div>
       </div>

@@ -1,124 +1,94 @@
-import { Star, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
+'use client';
+
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 
+const testimonials = [
+  {
+    stars: 5,
+    badge: '5.0 RATING',
+    quote: '"MobiSoins a transformé ma façon de gérer les soins de ma mère. L\'infirmière est arrivée en moins de 2 heures, qualifiée et professionnelle."',
+    name: 'Marie Tremblay',
+    role: 'Patiente, Montréal',
+    avatar: 'https://i.pravatar.cc/80?img=47',
+  },
+  {
+    stars: 5,
+    badge: 'ENTERPRISE',
+    quote: '"En tant qu\'infirmière, MobiSoins me permet de choisir mes missions et de gagner 40% de plus qu\'en milieu hospitalier. La plateforme est intuitive."',
+    name: 'Sarah Beauchamp',
+    role: 'Infirmière OIIQ, Québec',
+    avatar: 'https://i.pravatar.cc/80?img=32',
+  },
+  {
+    stars: 5,
+    badge: 'FAST IMPACT',
+    quote: '"Le matching IA est impressionnant — il a trouvé une infirmière spécialisée en soins post-opératoires disponible le soir même."',
+    name: 'Pierre Gagnon',
+    role: 'Aidant naturel, Laval',
+    avatar: 'https://i.pravatar.cc/80?img=53',
+  },
+];
+
 export const Trust = () => {
   const { t } = useLanguage();
-  
-  const testimonials = [
-    {
-      headline: t('trust.testimonial1Headline'),
-      text: t('trust.testimonial1Text'),
-      author: "Marie L.",
-      handle: "@marie_montreal",
-      platform: "instagram",
-      avatar: "https://i.pravatar.cc/150?img=5"
-    },
-    {
-      headline: t('trust.testimonial2Headline'),
-      text: t('trust.testimonial2Text'),
-      author: "Jean Tremblay",
-      handle: "@jtremblay",
-      platform: "twitter",
-      avatar: "https://i.pravatar.cc/150?img=11"
-    },
-    {
-      headline: t('trust.testimonial3Headline'),
-      text: t('trust.testimonial3Text'),
-      author: "Sophie B.",
-      handle: "@sophie_b_nurse",
-      platform: "facebook",
-      avatar: "https://i.pravatar.cc/150?img=9"
-    },
-    {
-      headline: t('trust.testimonial4Headline'),
-      text: t('trust.testimonial4Text'),
-      author: "Pierre G.",
-      handle: "@pierreg_quebec",
-      platform: "twitter",
-      avatar: "https://i.pravatar.cc/150?img=13"
-    },
-    {
-      headline: t('trust.testimonial5Headline'),
-      text: t('trust.testimonial5Text'),
-      author: "Isabelle K.",
-      handle: "@isa_k",
-      platform: "instagram",
-      avatar: "https://i.pravatar.cc/150?img=24"
-    },
-    {
-      headline: t('trust.testimonial6Headline'),
-      text: t('trust.testimonial6Text'),
-      author: "Marc A.",
-      handle: "@marco_polo",
-      platform: "linkedin",
-      avatar: "https://i.pravatar.cc/150?img=68"
-    }
-  ];
-
-  const SocialIcon = ({ platform }: { platform: string }) => {
-    switch (platform) {
-      case 'instagram': return <Instagram className="w-5 h-5 text-pink-500" />;
-      case 'twitter': return <Twitter className="w-5 h-5 text-blue-400" />;
-      case 'facebook': return <Facebook className="w-5 h-5 text-blue-600" />;
-      case 'linkedin': return <Linkedin className="w-5 h-5 text-blue-700" />;
-      default: return <Star className="w-5 h-5 text-yellow-400" />;
-    }
-  };
 
   return (
-    <section id="trust" className="py-32 bg-white relative overflow-hidden">
-      {/* Gradient Blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[10%] right-[10%] w-[60%] h-[60%] bg-blue-100/30 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute -bottom-[10%] -left-[10%] w-[60%] h-[60%] bg-blue-50/40 rounded-full blur-3xl opacity-50"></div>
-      </div>
-
-      {/* Background Grid */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e3a5f05_1px,transparent_1px),linear-gradient(to_bottom,#1e3a5f05_1px,transparent_1px)] bg-[size:2rem_2rem]"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-24">
-          <div className="text-blue-600 font-semibold mb-2">{t('trust.badge')}</div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-navy-900">
-            {t('trust.title')} <br />
-            {t('trust.subtitle')}
+    <section id="trust" className="py-32" style={{ background: '#f7f9fa' }}>
+      <div className="container-custom">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-widest mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+            TÉMOIGNAGES
+          </div>
+          <h2
+            className="text-4xl md:text-5xl font-semibold tracking-tight mb-4"
+            style={{ color: '#1a1a24', letterSpacing: '-0.03em' }}
+          >
+            {t('trust.title')}
           </h2>
-        </div>
+          <p className="text-lg max-w-2xl mx-auto font-light" style={{ color: '#5a5a6a' }}>
+            {t('trust.subtitle')}
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((t, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((item, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
+              transition={{ delay: i * 0.1 }}
+              className="bg-white/50 backdrop-blur-xl border border-white/70 rounded-[2rem] p-8 flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="font-bold text-navy-900 mb-3 text-lg">{t.headline}</div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
-                {t.text}
-              </p>
-              
-              <div className="flex items-center justify-between pt-6 border-t border-gray-50">
-                <div className="flex items-center gap-3">
-                  <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover" loading="lazy" />
-                  <div>
-                    <div className="font-bold text-navy-900 text-sm">{t.author}</div>
-                    <div className="text-xs text-blue-500">{t.handle}</div>
-                  </div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex gap-1">
+                  {Array.from({ length: item.stars }).map((_, j) => (
+                    <svg key={j} width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" className="text-yellow-400">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  ))}
                 </div>
-                <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center">
-                  <SocialIcon platform={t.platform} />
+                <span className="text-[10px] font-semibold text-slate-400 tracking-widest">{item.badge}</span>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed flex-grow font-light mb-8">{item.quote}</p>
+              <div className="border-t border-slate-100 pt-6 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <img src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full object-cover" />
+                  <div>
+                    <div className="text-sm font-semibold text-slate-800">{item.name}</div>
+                    <div className="text-xs text-slate-400">{item.role}</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
-
         </div>
       </div>
     </section>

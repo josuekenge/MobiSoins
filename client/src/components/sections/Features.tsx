@@ -1,254 +1,273 @@
-import { Map, Shield, BadgeCheck, Clock, Search, Calendar, Home, User, History, Stethoscope, Syringe, Pill, ClipboardList } from 'lucide-react';
+'use client';
+
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-const MinimalBackground = () => (
-  <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-    {/* Abstract clean shapes */}
-    <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2" />
-    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-x-1/3 translate-y-1/3" />
-    
-    {/* Grid pattern dots */}
-    <div className="absolute inset-0 opacity-[0.03]" 
-         style={{ 
-           backgroundImage: 'radial-gradient(#28417A 1px, transparent 1px)', 
-           backgroundSize: '32px 32px' 
-         }}>
-    </div>
-
-    {/* Floating elements */}
-    <motion.div 
-      animate={{ 
-        y: [0, -20, 0],
-        rotate: [0, 5, 0]
-      }}
-      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute top-20 right-[10%] w-32 h-32 border border-blue-100 rounded-full opacity-20"
-    />
-        <motion.div 
-          animate={{ 
-            y: [0, 30, 0],
-            rotate: [0, -10, 0]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-40 left-[5%] w-24 h-24 border border-blue-100 rounded-2xl opacity-20"
-        />
-  </div>
-);
-
 export const Features = () => {
   const { t } = useLanguage();
-  
-  const features = [
-    {
-      icon: Map,
-      title: t('features.geolocation'),
-      description: t('features.geolocationDescription'),
-      delay: 0.1
-    },
-    {
-      icon: Shield,
-      title: t('features.secure'),
-      description: t('features.secureDescription'),
-      delay: 0.2
-    },
-    {
-      icon: BadgeCheck,
-      title: t('features.certified'),
-      description: t('features.certifiedDescription'),
-      delay: 0.3
-    },
-    {
-      icon: Clock,
-      title: t('features.available'),
-      description: t('features.availableDescription'),
-      delay: 0.4
-    }
-  ];
 
   return (
-    <section id="features" className="py-32 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
-      <MinimalBackground />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          
-          {/* LEFT COLUMN: Content */}
-          <div className="w-full lg:w-1/2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-12"
-            >
-              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6 leading-tight">
-                {t('features.mainTitle')} <br/>
-                <span className="text-blue-600">{t('features.mainTitleHighlight')}</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-md">
-                {t('features.mainSubtitle')}
+    <section id="features" className="py-32" style={{ background: '#f7f9fa' }}>
+      <div className="container-custom">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2
+            className="text-4xl md:text-5xl font-semibold tracking-tight mb-4"
+            style={{ color: '#1a1a24', letterSpacing: '-0.03em' }}
+          >
+            {t('features.title')}
+          </h2>
+          <p className="text-lg max-w-2xl mx-auto font-light" style={{ color: '#5a5a6a' }}>
+            {t('features.subtitle')}
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-8 min-h-[800px]">
+
+          {/* Card 1 - Large (AI Matching) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-panel md:col-span-2 p-10 flex flex-col justify-between group"
+          >
+            <div>
+              <div className="flex bg-slate-100 w-12 h-12 border border-slate-200 rounded-full shadow-inner items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-700">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <h3 className="text-3xl font-semibold tracking-tight mb-3" style={{ color: '#1a1a24' }}>
+                {t('features.aiMatching.title')}
+              </h3>
+              <p className="text-lg font-light" style={{ color: '#5a5a6a' }}>
+                {t('features.aiMatching.description')}
               </p>
-            </motion.div>
-
-            <div className="grid sm:grid-cols-2 gap-10">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -5 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: feature.delay }}
-                  className="group"
-                >
-                  <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                    <feature.icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-2 group-hover:text-blue-600 transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
             </div>
-          </div>
-
-          {/* RIGHT COLUMN: Visuals */}
-          <div className="w-full lg:w-1/2 relative h-[600px] flex items-center justify-center">
-            
-            {/* Phone 1: Home Screen (Back/Left) - SWAPPED */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="absolute right-0 top-0 w-[280px] h-[560px] bg-gray-900 rounded-[2.5rem] border-8 border-gray-900 shadow-2xl z-10 transform translate-x-12 translate-y-[-20px] opacity-90 overflow-hidden"
-            >
-              {/* UI: Home Screen */}
-              <div className="w-full h-full bg-gray-50 flex flex-col relative">
-                {/* Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-30"></div>
-                
-                {/* Header */}
-                <div className="bg-white pb-4 pt-12 px-6 rounded-b-3xl shadow-sm z-10">
-                   <div className="flex justify-center mb-4">
-                     <img src="/mobisoins-logo.jpeg" alt="Logo" className="h-6 w-auto" loading="lazy" />
-                   </div>
-                   
-                   {/* Search Bar */}
-                   <div className="bg-gray-100 rounded-full p-3 flex items-center gap-2 mb-2">
-                      <Search className="w-5 h-5 text-gray-400" />
-                      <span className="text-xs text-gray-400 flex-1">Commander...</span>
-                      <div className="bg-white px-2 py-1 rounded-full text-[10px] flex items-center gap-1 shadow-sm">
-                        <Calendar className="w-3 h-3 text-blue-500" /> Plus tard
-                      </div>
-                   </div>
+            <div className="mt-10 flex flex-col md:flex-row gap-6 h-auto md:h-44">
+              <div className="flex-1 bg-white/60 border border-white/80 rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden shadow-sm min-h-[160px]">
+                <div className="flex justify-between items-center w-full mb-4 relative z-10">
+                  <div className="text-xs font-medium text-slate-500 tracking-wider uppercase">Demandes actives</div>
+                  <div className="flex gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+                  </div>
                 </div>
-
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-hidden p-6">
-                   <div className="flex justify-between items-center mb-4">
-                      <h3 className="font-bold text-navy-900">Suggestions</h3>
-                      <span className="text-xs text-blue-600">Tout afficher</span>
-                   </div>
-
-                   {/* Suggestions Grid */}
-                   <div className="grid grid-cols-2 gap-3 mb-6">
-                      <div className="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-between group hover:shadow-md transition-all border border-gray-50">
-                         <div className="self-end w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
-                            <Stethoscope className="w-4 h-4" />
-                         </div>
-                         <span className="text-xs font-medium text-gray-700">Soins infirmiers</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-between group hover:shadow-md transition-all border border-gray-50">
-                         <div className="self-end w-8 h-8 bg-green-50 rounded-full flex items-center justify-center text-green-600">
-                            <Syringe className="w-4 h-4" />
-                         </div>
-                         <span className="text-xs font-medium text-gray-700">Vaccination</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-between group hover:shadow-md transition-all border border-gray-50">
-                         <div className="self-end w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center text-purple-600">
-                            <Pill className="w-4 h-4" />
-                         </div>
-                         <span className="text-[10px] font-medium leading-tight text-gray-700">Suivi maladies</span>
-                      </div>
-                      <div className="bg-white p-3 rounded-2xl shadow-sm h-24 flex flex-col justify-between group hover:shadow-md transition-all border border-gray-50">
-                         <div className="self-end w-8 h-8 bg-orange-50 rounded-full flex items-center justify-center text-orange-600">
-                            <ClipboardList className="w-4 h-4" />
-                         </div>
-                         <span className="text-xs font-medium text-gray-700">Bilan santé</span>
-                      </div>
-                   </div>
-
-                   {/* Banner */}
-                   <div className="bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-4 relative overflow-hidden h-32 text-white shadow-lg">
-                      <div className="relative z-10">
-                        <h4 className="font-bold text-sm mb-2">Besoin d'aide?</h4>
-                        <p className="text-[10px] opacity-90 mb-3 max-w-[120px] leading-tight">
-                            Nos infirmières sont prêtes à intervenir.
-                        </p>
-                        <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] inline-block border border-white/30">
-                          Réserver maintenant
-                        </div>
-                      </div>
-                      <div className="absolute right-0 bottom-0 w-24 h-24 bg-white/10 rounded-full translate-x-8 translate-y-8 blur-xl"></div>
-                      <div className="absolute right-4 top-4 text-4xl opacity-20">🏥</div>
-                   </div>
-                </div>
-
-                {/* Bottom Nav */}
-                <div className="bg-white border-t border-gray-100 h-16 flex justify-around items-center px-6 pb-2">
-                   <div className="flex flex-col items-center gap-1 text-blue-600">
-                      <Home className="w-5 h-5" />
-                      <span className="text-[10px] font-medium">Accueil</span>
-                   </div>
-                   <div className="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 transition-colors">
-                      <Search className="w-5 h-5" />
-                      <span className="text-[10px] font-medium">Explorer</span>
-                   </div>
-                   <div className="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 transition-colors">
-                      <History className="w-5 h-5" />
-                      <span className="text-[10px] font-medium">Activités</span>
-                   </div>
-                   <div className="flex flex-col items-center gap-1 text-gray-400 hover:text-blue-600 transition-colors">
-                      <User className="w-5 h-5" />
-                      <span className="text-[10px] font-medium">Profil</span>
-                   </div>
+                <div className="flex items-end gap-1.5 h-full pt-4 relative z-10">
+                  {[30, 50, 80, 100, 60, 40, 45, 20].map((h, i) => (
+                    <div
+                      key={i}
+                      className={`w-full rounded-t-sm relative ${i === 3 ? 'bg-slate-600/50' : 'bg-slate-300/60'}`}
+                      style={{ height: `${h}%` }}
+                    >
+                      {i === 3 && (
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-600" />
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
-            </motion.div>
-
-            {/* Phone 2: Splash Screen (Front/Right) - SWAPPED */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="relative z-20 w-[300px] h-[600px] bg-gray-900 rounded-[3rem] border-8 border-gray-900 shadow-2xl right-10 md:right-20 overflow-hidden"
-            >
-              {/* UI: Splash Screen with Logo */}
-              <div className="w-full h-full bg-white flex flex-col items-center justify-center relative">
-                <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#1e3a5f_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="relative z-10 p-8 flex flex-col items-center"
-                >
-                  <img 
-                    src="/mobisoins-logo.jpeg" 
-                    alt="MobiSoins Logo" 
-                    className="w-64 h-auto object-contain mix-blend-multiply"
-                    loading="lazy"
-                  />
-                </motion.div>
+              <div className="w-full md:w-1/3 bg-white/60 border border-white/80 rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
+                <div className="text-xs font-medium text-slate-500 tracking-wider uppercase mb-1">Correspondances IA</div>
+                {[1, 2].map((_, i) => (
+                  <div key={i} className={`flex items-center gap-3 ${i === 1 ? 'opacity-60' : ''}`}>
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200 text-slate-700 text-sm">
+                      &#128105;&#8205;&#9877;&#65039;
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div className="h-1.5 w-full bg-slate-300 rounded-full" />
+                      <div className="h-1.5 w-2/3 bg-slate-200 rounded-full" />
+                    </div>
+                  </div>
+                ))}
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-          </div>
+          {/* Card 2 - Small (Real-Time Tracking) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="glass-panel p-10 flex flex-col justify-between group"
+          >
+            <div>
+              <div className="flex bg-slate-100 w-12 h-12 border border-slate-200 rounded-full shadow-inner items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-700">
+                  <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold tracking-tight mb-3" style={{ color: '#1a1a24' }}>
+                {t('features.tracking.title')}
+              </h3>
+              <p className="font-light" style={{ color: '#5a5a6a' }}>
+                {t('features.tracking.description')}
+              </p>
+            </div>
+            <div
+              className="flex w-full h-44 mt-10 relative items-end justify-center"
+              style={{
+                maskImage: 'linear-gradient(180deg, transparent, black 40%)',
+                WebkitMaskImage: 'linear-gradient(180deg, transparent, black 40%)',
+              }}
+            >
+              <div className="transform group-hover:-translate-y-4 transition-transform duration-500 bg-slate-50/50 w-[85%] h-24 border border-slate-300/30 rounded-xl absolute bottom-16 shadow-sm" />
+              <div className="transform group-hover:-translate-y-2 transition-transform duration-500 bg-slate-50/80 w-[92%] h-24 border border-slate-200/50 rounded-xl absolute bottom-8 shadow-md" />
+              <div className="absolute w-full bottom-0 h-24 bg-white/80 border border-white/80 rounded-xl flex items-center px-4 gap-3">
+                <div className="flex bg-slate-50 w-10 h-10 border border-slate-200 rounded-xl shadow-inner items-center justify-center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-500">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <div className="space-y-2 flex-1">
+                  <div className="h-2.5 bg-slate-300/80 w-1/2 rounded-full" />
+                  <div className="h-2 w-1/3 bg-slate-200/80 rounded-full" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 3 - Small (Auto Scheduling) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass-panel p-10 flex flex-col justify-between group"
+          >
+            <div>
+              <div className="flex bg-slate-100 w-12 h-12 border border-slate-200 rounded-full shadow-inner items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-700">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold tracking-tight mb-3" style={{ color: '#1a1a24' }}>
+                {t('features.scheduling.title')}
+              </h3>
+              <p className="font-light" style={{ color: '#5a5a6a' }}>
+                {t('features.scheduling.description')}
+              </p>
+            </div>
+            <div className="mt-10 space-y-3">
+              <div className="flex items-center justify-between bg-white/70 border border-white p-4 rounded-xl shadow-sm">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-7 h-7 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-600">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <div className="h-2.5 w-24 bg-slate-700 rounded-full" />
+                </div>
+                <div className="w-11 h-6 bg-slate-700 rounded-full relative">
+                  <div className="absolute right-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow border border-slate-200" />
+                </div>
+              </div>
+              <div className="flex items-center justify-between bg-white/40 border border-white/60 p-4 rounded-xl">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-7 h-7 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M23 4v6h-6" /><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                    </svg>
+                  </div>
+                  <div className="h-2 w-28 bg-slate-400 rounded-full" />
+                </div>
+                <div className="w-11 h-6 bg-slate-200 rounded-full relative border border-slate-300">
+                  <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-sm border border-slate-100" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 4 - Large (24/7 Monitoring) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="glass-panel md:col-span-2 p-10 flex flex-col gap-6 group"
+          >
+            <div>
+              <div className="flex bg-slate-100 w-12 h-12 border border-slate-200 rounded-full shadow-inner items-center justify-center mb-6">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-700">
+                  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold tracking-tight mb-2" style={{ color: '#1a1a24' }}>
+                {t('features.monitoring.title')}
+              </h3>
+              <p className="max-w-lg font-light" style={{ color: '#5a5a6a' }}>
+                {t('features.monitoring.description')}
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-5 h-auto md:h-48 mt-4">
+              <div className="flex-[2] bg-white/60 border border-white/80 rounded-2xl relative overflow-hidden flex items-center justify-center shadow-sm min-h-[160px]">
+                <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 15,30 L 40,60 L 65,35 L 85,75" stroke="#cbd5e1" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                  <path d="M 40,60 L 55,85" stroke="#cbd5e1" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                </svg>
+                {[
+                  { top: '30%', left: '15%', size: '14px' },
+                  { top: '60%', left: '40%', size: '20px', active: true },
+                  { top: '35%', left: '65%', size: '12px' },
+                  { top: '75%', left: '85%', size: '14px' },
+                  { top: '85%', left: '55%', size: '10px' },
+                ].map((n, i) => (
+                  <div
+                    key={i}
+                    className={`absolute rounded-full border border-white ${n.active ? 'bg-white border-2 border-slate-200 flex items-center justify-center' : 'bg-slate-300'}`}
+                    style={{
+                      top: n.top,
+                      left: n.left,
+                      width: n.size,
+                      height: n.size,
+                      boxShadow: `0 0 ${n.active ? 20 : 10}px rgba(148,163,184,0.4)`,
+                    }}
+                  >
+                    {n.active && (
+                      <>
+                        <div className="w-2 h-2 bg-slate-500 rounded-full animate-ping absolute" />
+                        <div className="w-2 h-2 bg-slate-500 rounded-full" />
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div className="flex-[1] flex flex-col gap-4">
+                <div className="bg-white/60 border border-white/80 rounded-xl p-5 flex-1 flex flex-col justify-center shadow-sm">
+                  <div className="text-xs font-medium text-slate-500 tracking-wider uppercase mb-1">Satisfaction</div>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-3xl font-semibold text-slate-800">4.9</span>
+                    <span className="text-sm font-medium text-slate-500">/5 &#11088;</span>
+                  </div>
+                  <div className="mt-3 h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                    <div className="h-full bg-slate-400 w-[98%] rounded-full" />
+                  </div>
+                </div>
+                <div className="bg-white/60 border border-white/80 rounded-xl p-5 flex-1 flex flex-col justify-center shadow-sm">
+                  <div className="text-xs font-medium text-slate-500 tracking-wider uppercase mb-1">Soins complétés</div>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-3xl font-semibold text-slate-800">10K+</span>
+                  </div>
+                  <div className="mt-3 flex gap-1">
+                    {[70, 85, 60, 90, 75, 95, 80].map((h, i) => (
+                      <div key={i} className="flex-1 bg-slate-300/60 rounded-sm" style={{ height: `${h * 0.3}px` }} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

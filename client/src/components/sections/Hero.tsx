@@ -1,472 +1,358 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Star, Clock, CheckCircle, Activity, Calendar, FileText, User, Mail, Search, ChevronDown, ArrowRight, Loader2, AlertCircle, XCircle } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, FileText } from 'lucide-react';
 import { z } from 'zod';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { PlayStoreButton } from '../ui/play-store-button';
+import { AppStoreButton } from '../ui/app-store-button';
 
-const emailSchema = z.string().email({ message: "Email invalide" });
+const emailSchema = z.string().email();
 
 export const Hero = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'invalid'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
   const { t } = useLanguage();
-
-  useEffect(() => {
-    if (status === 'success' || status === 'error' || status === 'invalid') {
-      const timer = setTimeout(() => {
-        setStatus('idle');
-        setErrorMessage('');
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!email) return;
-
-    // Validate email
-    const validation = emailSchema.safeParse(email);
-    if (!validation.success) {
+    if (!emailSchema.safeParse(email).success) {
       setStatus('invalid');
-      setErrorMessage(validation.error.issues[0].message);
       return;
     }
-
     setStatus('loading');
-    setErrorMessage('');
-
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_FORM_ACCESS_KEY,
-          email: email,
+          access_key: process.env.NEXT_PUBLIC_FORM_ACCESS_KEY,
+          email,
           subject: 'Nouvelle inscription (Hero)',
-          from_name: 'MobiSoins Hero Form',
+          from_name: 'MobiSoins Hero',
         }),
       });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setStatus('success');
-        setEmail('');
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
+      const data = await res.json();
+      setStatus(data.success ? 'success' : 'error');
+      if (data.success) setEmail('');
+    } catch {
       setStatus('error');
     }
+    setTimeout(() => setStatus('idle'), 3000);
   };
 
-  const partners = [
-    { name: "OIIQ", url: "https://placehold.co/160x60/ffffff/28417A?text=OIIQ&font=montserrat" },
-    { name: "Santé Québec", url: "https://placehold.co/180x60/ffffff/28417A?text=Sant%C3%A9+Qu%C3%A9bec&font=roboto" },
-    { name: "Croix Bleue", url: "https://placehold.co/160x60/ffffff/28417A?text=Croix+Bleue&font=playfair" },
-    { name: "Desjardins", url: "https://placehold.co/160x60/ffffff/28417A?text=Desjardins&font=lato" },
-    { name: "Sun Life", url: "https://placehold.co/140x60/ffffff/28417A?text=Sun+Life&font=oswald" },
-    { name: "Manuvie", url: "https://placehold.co/150x60/ffffff/28417A?text=Manuvie&font=merriweather" },
-    { name: "SSQ Assurance", url: "https://placehold.co/180x60/ffffff/28417A?text=SSQ+Assurance&font=raleway" },
-    { name: "La Capitale", url: "https://placehold.co/160x60/ffffff/28417A?text=La+Capitale&font=pt-sans" },
-    { name: "Pharmaprix", url: "https://placehold.co/160x60/ffffff/28417A?text=Pharmaprix&font=open-sans" },
-    { name: "OIIQ", url: "https://placehold.co/160x60/ffffff/28417A?text=OIIQ&font=montserrat" },
-    { name: "Santé Québec", url: "https://placehold.co/180x60/ffffff/28417A?text=Sant%C3%A9+Qu%C3%A9bec&font=roboto" },
-    { name: "Croix Bleue", url: "https://placehold.co/160x60/ffffff/28417A?text=Croix+Bleue&font=playfair" },
-  ];
-
   return (
-    <section className="relative bg-white min-h-screen flex flex-col items-center justify-center pt-32 pb-24 overflow-hidden">
-      {/* Gradient Blobs */}
+    <section
+      className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden"
+      style={{ background: '#f7f9fa' }}
+    >
+      {/* Subtle ambient glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-gradient-to-br from-blue-50 via-blue-100/30 to-green-50/20 rounded-full blur-[120px] opacity-70"></div>
+        <div className="absolute top-1/2 right-[30%] -translate-y-1/2 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-[20%] w-[300px] h-[300px] bg-purple-300/8 rounded-full blur-[90px]" />
       </div>
 
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e3a5f0a_1px,transparent_1px),linear-gradient(to_bottom,#1e3a5f0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-      </div>
+      <div className="container-custom w-full z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 lg:gap-24">
 
-      {/* Header Content */}
-      <div className="container mx-auto px-6 text-center z-10 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-navy-50 text-navy-800 rounded-full text-sm font-semibold mb-8"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          {t('hero.availableInQuebec')}
-        </motion.div>
+          {/* Left: Text */}
+          <div className="flex flex-col items-start">
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[clamp(3rem,5.5vw,5rem)] font-semibold leading-[1.05] tracking-[-0.04em] mb-6"
+              style={{ color: '#1a1a24' }}
+            >
+              {t('hero.title')}<br />
+              <span style={{ color: '#1a1a24' }}>{t('hero.titleHighlight')}</span>
+            </motion.h1>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-5xl lg:text-7xl font-bold text-navy-900 tracking-tight mb-6"
-        >
-          {t('hero.title')} <br className="hidden md:block" />
-          <span className="text-blue-600">
-            {t('hero.titleHighlight')}
-          </span>
-        </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[clamp(1.1rem,1.5vw,1.25rem)] max-w-[520px] leading-relaxed mb-10 font-light"
+              style={{ color: '#5a5a6a' }}
+            >
+              {t('hero.subtitle')}
+            </motion.p>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl text-gray-600 max-w-2xl mx-auto mb-10"
-        >
-          {t('hero.subtitle')}
-        </motion.p>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a 
-            href="https://calendly.com/mobisoins-info/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2"
-          >
-            <Calendar className="w-5 h-5" />
-            {t('hero.bookNow')}
-          </a>
-          <a 
-             href="/Healthcare_Access_On_Demand.pdf#zoom=40"
-             target="_blank"
-             rel="noopener noreferrer"
-             className="px-8 py-4 bg-white border-2 border-navy-100 text-navy-800 font-bold rounded-2xl hover:border-navy-300 hover:shadow-lg transition-all flex items-center gap-2"
-          >
-            <FileText className="w-5 h-5" />
-            {t('hero.pitchDeck')}
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Central Visual & Floating Cards - Responsive Layout */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 xl:gap-24 mb-20 z-20">
-        
-        {/* LEFT SIDE: Priority Access Card */}
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          whileHover={{ scale: 1.02 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="relative bg-white p-8 lg:p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 border border-gray-100 w-full max-w-[400px] flex flex-col justify-center z-30"
-        >
-          {/* Header */}
-          <div className="mb-8 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 mb-6 group-hover:scale-110 transition-transform duration-300 text-blue-600">
-               <Clock className="w-8 h-8" />
-            </div>
-            <h3 className="font-bold text-navy-900 text-3xl mb-3 tracking-tight">
-              {t('hero.waitlistTitle')}
-            </h3>
-            <p className="text-base text-gray-500 leading-relaxed max-w-[280px] mx-auto">
-              {t('hero.waitlistSubtitle')} <strong className="text-blue-600">{t('hero.waitlistDiscount')}</strong> {t('hero.waitlistDiscountSuffix')}
-            </p>
-          </div>
-
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="relative w-full mb-8">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-blue-50 rounded-2xl blur-md opacity-40 group-hover:opacity-60 transition-opacity"></div>
-              <input 
-                type="email" 
-                placeholder={t('hero.emailPlaceholder')}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={status === 'loading' || status === 'success'}
-                className="relative w-full bg-white border-2 border-gray-100 rounded-2xl py-4 pl-6 pr-14 text-base font-medium focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-50 transition-all placeholder:text-gray-300 text-navy-900"
-                required
-              />
-              <button 
-                type="submit"
-                disabled={status === 'loading' || status === 'success'}
-                className="absolute right-2 top-2 bottom-2 aspect-square bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:scale-105 active:scale-95"
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            >
+              <a
+                href="https://calendly.com/mobisoins-info/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative overflow-hidden inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-slate-800 bg-white/70 border border-white/90 backdrop-blur-md cursor-pointer transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:bg-white/95 group"
+                style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,255,255,0.5)' }}
               >
-                {status === 'loading' ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : status === 'success' ? (
-                  <CheckCircle className="w-5 h-5" />
-                ) : (
-                  <ArrowRight className="w-5 h-5" />
-                )}
-              </button>
-            </div>
+                <span className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-20deg] group-hover:left-[150%] transition-all duration-500" />
+                <Calendar className="w-4 h-4" />
+                {t('hero.bookNow')}
+              </a>
+              <a
+                href="/Healthcare_Access_On_Demand.pdf#zoom=40"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-4 rounded-full font-medium text-slate-700 bg-white/40 border border-white/60 backdrop-blur-xl hover:bg-white/60 transition-all duration-300"
+                style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)' }}
+              >
+                <FileText className="w-4 h-4" />
+                {t('hero.pitchDeck')}
+              </a>
+            </motion.div>
 
-            {/* Feedback Messages */}
-            <AnimatePresence>
-              {status === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center gap-1.5 text-blue-700 font-semibold text-xs"
-                >
-                  <CheckCircle className="w-3.5 h-3.5" />
-                  <span>{t('hero.successMessage')}</span>
-                </motion.div>
-              )}
-              {status === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center gap-1.5 text-red-700 font-semibold text-xs"
-                >
-                  <XCircle className="w-3.5 h-3.5" />
-                  <span>{t('hero.errorMessage')}</span>
-                </motion.div>
-              )}
-              {status === 'invalid' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute left-0 right-0 top-full mt-2 p-2 rounded-lg bg-orange-50 border border-orange-100 flex items-center justify-center gap-1.5 text-orange-700 font-semibold text-xs"
-                >
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  <span>{errorMessage || t('hero.invalidEmail')}</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </form>
-          
-          {/* Social Proof */}
-          <div className="flex items-center justify-center gap-4 pt-4 border-t border-gray-50">
-             <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-9 h-9 rounded-full ring-2 ring-white bg-gray-100 overflow-hidden shadow-sm">
-                    <img src={`https://placehold.co/80x80/e2e8f0/475569?text=${i}`} alt="" className="h-full w-full object-cover opacity-90" loading="lazy" />
-                  </div>
-                ))}
-             </div>
-             <div className="text-left">
-                <div className="text-sm font-bold text-navy-900">+2,547</div>
-                <div className="text-xs font-medium text-gray-400">{t('hero.personsRegistered')}</div>
-             </div>
+            {/* Store Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap items-center gap-3 mt-2"
+            >
+              <AppStoreButton />
+              <PlayStoreButton />
+            </motion.div>
           </div>
-        </motion.div>
 
-        {/* CENTER: Phone Mockup & RIGHT: Floating Info Cards */}
-        <div className="relative flex items-center justify-center lg:justify-start">
-            
-          {/* Phone Mockup */}
-          <motion.div 
-            initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative z-20 w-[300px] h-[600px] bg-navy-900 rounded-[3rem] border-[8px] border-navy-900 shadow-2xl overflow-hidden shrink-0"
-          >
-            {/* Status Bar */}
-            <div className="h-8 bg-white flex items-center justify-between px-6 pt-3 pb-1 shrink-0">
-              <span className="text-xs font-bold text-navy-900">9:41</span>
-              <div className="flex gap-1 items-center">
-                <div className="w-4 h-2.5 bg-navy-900 rounded-[1px]"></div>
-                <div className="w-0.5 h-2.5 bg-navy-900 rounded-[1px]"></div>
-              </div>
-            </div>
+          {/* Right: Clay Phone Mockup */}
+          <div className="flex items-center justify-center relative" style={{ perspective: '1400px' }}>
+            {/* Ambient glow behind phone */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] bg-blue-400/10 rounded-full blur-[90px] -z-10 pointer-events-none" />
 
-            {/* App Content */}
-            <div className="flex-1 flex flex-col bg-white overflow-hidden h-full">
-                <div className="flex justify-end px-6 pt-2">
-                  <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                    <User className="w-4 h-4 text-gray-400" />
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-[300px] h-[620px] mx-auto"
+              style={{ animation: 'float 6s ease-in-out infinite' }}
+            >
+              {/* Side buttons - left volume */}
+              <div
+                className="absolute w-[9px] bg-[#e2e8f0] z-0 rounded-l-lg"
+                style={{
+                  left: '-9px',
+                  top: '122px',
+                  height: '28px',
+                  boxShadow: 'inset 2px 2px 4px rgba(255,255,255,0.9), inset -2px -2px 4px rgba(15,23,42,0.15)',
+                  border: '1px solid rgba(255,255,255,0.6)',
+                  borderRight: 'none',
+                }}
+              />
+              <div
+                className="absolute w-[9px] bg-[#e2e8f0] z-0 rounded-l-lg"
+                style={{
+                  left: '-9px',
+                  top: '176px',
+                  height: '56px',
+                  boxShadow: 'inset 2px 2px 4px rgba(255,255,255,0.9), inset -2px -2px 4px rgba(15,23,42,0.15)',
+                  border: '1px solid rgba(255,255,255,0.6)',
+                  borderRight: 'none',
+                }}
+              />
+              <div
+                className="absolute w-[9px] bg-[#e2e8f0] z-0 rounded-l-lg"
+                style={{
+                  left: '-9px',
+                  top: '244px',
+                  height: '56px',
+                  boxShadow: 'inset 2px 2px 4px rgba(255,255,255,0.9), inset -2px -2px 4px rgba(15,23,42,0.15)',
+                  border: '1px solid rgba(255,255,255,0.6)',
+                  borderRight: 'none',
+                }}
+              />
+              {/* Right power button */}
+              <div
+                className="absolute w-[9px] bg-[#e2e8f0] z-0 rounded-r-lg"
+                style={{
+                  right: '-9px',
+                  top: '190px',
+                  height: '78px',
+                  boxShadow: 'inset -2px 2px 4px rgba(255,255,255,0.9), inset 2px -2px 4px rgba(15,23,42,0.15)',
+                  border: '1px solid rgba(255,255,255,0.6)',
+                  borderLeft: 'none',
+                }}
+              />
+
+              {/* Clay body */}
+              <div
+                className="absolute inset-0 bg-[#e2e8f0] rounded-[3.9rem] z-0 border-[5px] border-[#f1f5f9]"
+                style={{
+                  boxShadow:
+                    '25px 35px 65px rgba(15,23,42,0.15), inset -6px -6px 16px rgba(15,23,42,0.08), inset 6px 6px 16px rgba(255,255,255,0.95)',
+                }}
+              />
+
+              {/* Screen */}
+              <div
+                className="absolute inset-x-[10px] top-[10px] bottom-[10px] bg-[#f8f9fb] rounded-[3.25rem] overflow-hidden flex flex-col z-10 border border-slate-200/70"
+                style={{ boxShadow: 'inset 0 0 20px rgba(15,23,42,0.06)' }}
+              >
+                {/* Dynamic Island */}
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[116px] h-[30px] bg-[#0f172a] rounded-full z-50 flex items-center justify-between px-2.5">
+                  <div className="w-3 h-3 bg-[#1e293b] rounded-full flex items-center justify-center">
+                    <div className="w-1 h-1 bg-blue-500/50 rounded-full blur-[1px]" />
+                  </div>
+                  <div
+                    className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"
+                    style={{ boxShadow: '0 0 4px rgba(16,185,129,0.6)' }}
+                  />
+                </div>
+
+                {/* Status bar */}
+                <div className="h-14 w-full pt-3 px-6 flex justify-between items-center text-[11px] font-semibold text-slate-800 z-40">
+                  <span className="ml-1 tracking-tight">9:41</span>
+                  <div className="flex gap-1.5 items-center opacity-80 mr-1">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <path d="M2 20h.01" /><path d="M7 20v-4" /><path d="M12 20v-8" /><path d="M17 20V4" />
+                    </svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <path d="M12 20h.01" /><path d="M2 8.82a15 15 0 0 1 20 0" /><path d="M5 12.859a10 10 0 0 1 14 0" /><path d="M8.5 16.429a5 5 0 0 1 7 0" />
+                    </svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                      <rect width="16" height="10" x="2" y="7" rx="2" ry="2" fill="currentColor" /><line x1="22" x2="22" y1="11" y2="13" />
+                    </svg>
                   </div>
                 </div>
 
-                <div className="flex-1 px-6 py-4 flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-center mb-6">
-                          <img src="/mobisoins-logo.jpeg" alt="MobiSoins" className="h-12 w-auto object-contain mix-blend-multiply" />
-                      </div>
-                      <h2 className="text-xl font-bold text-navy-900 text-center mb-6">
-                          {t('hero.getStarted')}
-                      </h2>
+                {/* App content */}
+                <div className="flex-1 px-4 pt-2 pb-10 flex flex-col gap-3 overflow-hidden bg-gradient-to-br from-[#f8f9fb] to-[#e2e8f0]/30">
+                  <div className="flex flex-col mb-1 ml-1">
+                    <h2 className="text-[22px] font-semibold text-slate-800 tracking-tight leading-none">MobiSoins</h2>
+                    <p className="text-xs text-slate-500 font-medium mt-1">Infirmière disponible ✓</p>
+                  </div>
 
-                      {/* Input */}
-                      <div className="mb-4">
-                          <label className="text-xs font-medium text-gray-500 mb-1.5 block">{t('hero.phoneNumber')}</label>
-                          <div className="bg-white border border-gray-200 rounded-xl p-3 flex items-center gap-2 shadow-sm">
-                            <div className="w-6 h-4 bg-red-600 rounded-sm flex items-center justify-center text-white text-[8px] font-bold shadow-sm">ID</div>
-                            <span className="text-sm font-medium text-navy-900">+62</span>
-                            <ChevronDown className="w-3 h-3 text-gray-300" />
-                            <div className="flex-1 h-4 border-l border-gray-100 ml-2 pl-2">
-                                <span className="text-xs text-gray-400">(201) 555-0123</span>
-                            </div>
-                          </div>
-                      </div>
-
-                      {/* Button */}
-                      <button className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-semibold text-sm mb-4 shadow-lg shadow-blue-600/20 active:scale-95 transition-all">
-                          {t('hero.continueButton')}
-                      </button>
-
-                      {/* Divider */}
-                      <div className="flex items-center gap-3 mb-4">
-                          <div className="flex-1 h-px bg-gray-100"></div>
-                          <span className="text-[10px] text-gray-400 font-medium">{t('hero.or')}</span>
-                          <div className="flex-1 h-px bg-gray-100"></div>
-                      </div>
-
-                      {/* Socials */}
-                      <div className="space-y-2.5">
-                          <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-navy-900 hover:bg-gray-100 transition-colors">
-                            <span className="text-lg">🍎</span>
-                            {t('hero.continueWithApple')}
-                          </button>
-                          <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-navy-900 hover:bg-gray-100 transition-colors">
-                            <span className="text-lg text-blue-600">G</span>
-                            {t('hero.continueWithGoogle')}
-                          </button>
-                          <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 flex items-center justify-center gap-2 text-xs font-medium text-navy-900">
-                            <Mail className="w-3 h-3 text-gray-500" />
-                            {t('hero.continueWithEmail')}
-                          </button>
+                  {/* Disponibilité card */}
+                  <div
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex items-center justify-between border border-slate-100/80 transition-all duration-500 hover:-translate-y-1"
+                    style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
+                  >
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">Disponibilité</span>
+                      <span className="text-3xl font-semibold text-slate-800 tracking-tight mt-1">
+                        24/7<span className="text-base text-slate-400 font-medium ml-1">h</span>
+                      </span>
+                    </div>
+                    <div className="relative w-[60px] h-[60px] rounded-full flex items-center justify-center">
+                      <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#f1f5f9" strokeWidth="8" />
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#3b82f6" strokeWidth="8" strokeDasharray="264" strokeDashoffset="0" strokeLinecap="round" />
+                      </svg>
+                      <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center border border-blue-100/50 text-blue-500">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Footer */}
-                    <div className="space-y-3 pb-4">
-                       <button className="w-full flex items-center justify-center gap-2 text-xs text-blue-600 font-medium hover:text-blue-700">
-                          <Search className="w-3 h-3" />
-                          {t('hero.findAccount')}
-                       </button>
+                  {/* Soins actifs chart */}
+                  <div
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex flex-col border border-slate-100/80 h-[168px] relative overflow-hidden"
+                    style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
+                  >
+                    <div className="flex justify-between items-center mb-2 z-10">
+                      <div className="flex items-center gap-1.5">
+                        <div
+                          className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
+                          style={{ boxShadow: '0 0 5px rgba(16,185,129,0.4)' }}
+                        />
+                        <span className="text-[10px] font-semibold text-slate-400 tracking-widest uppercase">Soins actifs</span>
+                      </div>
+                      <div className="text-sm font-semibold text-slate-800">
+                        12<span className="text-slate-400 font-normal text-[10px] ml-0.5">min</span>
+                      </div>
                     </div>
-                </div>
-            </div>
-          </motion.div>
+                    <div className="flex-1 flex items-end gap-[3px] z-10 w-full pt-2">
+                      {[30, 45, 35, 55, 40, 75, 100, 65, 45, 30, 50, 35].map((h, i) => (
+                        <div
+                          key={i}
+                          className={`flex-1 rounded-t-[2px] relative ${i === 6 ? 'bg-emerald-500/60' : 'bg-blue-200/60'}`}
+                          style={{ height: `${h}%` }}
+                        >
+                          {i === 6 && (
+                            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-emerald-500 border border-white" />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-          {/* RIGHT SIDE: Stacked Info Cards */}
-          <div className="hidden xl:flex flex-col justify-center gap-5 ml-8 z-10 relative">
-            
-            {/* Card 1 */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              whileHover={{ scale: 1.05, x: -5 }}
-              transition={{ delay: 0.6 }}
-              className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-56 hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                  <Activity className="w-5 h-5" />
+                  {/* Matching IA */}
+                  <div
+                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-slate-100/80 flex flex-col justify-between relative overflow-hidden min-h-[80px] flex-1"
+                    style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
+                  >
+                    <div className="flex items-center justify-between z-10">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-purple-50/80 flex items-center justify-center border border-purple-100/50">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-purple-500">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h4 className="text-xs font-semibold text-slate-800 tracking-tight">Matching IA</h4>
+                          <p className="text-[10px] text-purple-500 font-medium mt-0.5">Actif • 3 infirmières</p>
+                        </div>
+                      </div>
+                      <div className="w-8 h-4 bg-purple-500 rounded-full relative">
+                        <div className="absolute right-[2px] top-[2px] w-3 h-3 bg-white rounded-full shadow-sm" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-navy-900 leading-none">10K+</div>
-                  <div className="text-[10px] text-gray-500 font-medium mt-1">{t('hero.patientsServed')}</div>
-                </div>
+
+                {/* Home indicator */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[124px] h-[4px] bg-slate-900/10 rounded-full z-40" />
               </div>
             </motion.div>
 
-            {/* Card 2 */}
-            <motion.div 
+            {/* Floating mini cards */}
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              whileHover={{ scale: 1.05, x: -5 }}
-              transition={{ delay: 0.7 }}
-              className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-64 hover:shadow-xl transition-all duration-300"
-            >
-              <div className="text-xs font-bold text-navy-900 mb-3 uppercase tracking-wide text-gray-400">{t('hero.nextAppointment')}</div>
-              <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-2xl border border-gray-100">
-                 <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center shadow-sm text-lg border border-gray-100">👩‍⚕️</div>
-                 <div>
-                    <div className="text-xs font-bold text-navy-900">Inf. Sarah</div>
-                    <div className="text-[10px] text-blue-600 font-medium flex items-center gap-1">
-                       <Clock className="w-3 h-3" /> 14:00 - 15:00
-                    </div>
-                 </div>
-              </div>
-            </motion.div>
-
-            {/* Card 3 */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              whileHover={{ scale: 1.05, x: -5 }}
               transition={{ delay: 0.8 }}
-              className="bg-white p-5 rounded-3xl shadow-lg border border-gray-100 w-60 hover:shadow-xl transition-all duration-300"
+              className="hidden xl:flex absolute right-0 top-[20%] flex-col gap-2 w-48"
+              style={{ animation: 'float 7s ease-in-out infinite 0.8s' }}
             >
-              <div className="text-xs font-bold text-navy-900 mb-3 uppercase tracking-wide text-gray-400">{t('hero.highlights')}</div>
-              <div className="space-y-2.5">
-                 <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500">{t('hero.satisfaction')}</span>
-                    <span className="font-bold text-navy-900 flex items-center gap-1"><Star className="w-3 h-3 text-yellow-400 fill-yellow-400" /> 4.9/5</span>
-                 </div>
-                 <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500">{t('hero.network')}</span>
-                    <span className="font-bold text-blue-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> 500+ {t('hero.nurses')}</span>
-                 </div>
-                 <div className="flex justify-between items-center text-xs">
-                    <span className="text-gray-500">{t('hero.zone')}</span>
-                    <span className="font-bold text-navy-900">{t('hero.quebec')}</span>
-                 </div>
+              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100/80">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-lg font-semibold text-slate-800 leading-none">500+</div>
+                    <div className="text-[10px] text-slate-500 font-medium mt-1">Infirmières OIIQ</div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-slate-100/80">
+                <div className="text-[10px] font-semibold text-slate-400 mb-2 uppercase tracking-wide">Prochain soin</div>
+                <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-xl border border-slate-100">
+                  <div className="text-xl">👩‍⚕️</div>
+                  <div>
+                    <div className="text-xs font-bold text-slate-800">Inf. Sarah</div>
+                    <div className="text-[10px] text-blue-500 font-medium">14:00 - 15:00</div>
+                  </div>
+                </div>
               </div>
             </motion.div>
-
           </div>
-
-        </div>
-
-      </div>
-
-      {/* Partners Marquee (Integrated) */}
-      <div className="w-full relative flex overflow-hidden group opacity-70 mt-8">
-        {/* Gradient Masks for smooth fade effect at edges */}
-        <div className="absolute top-0 left-0 z-10 w-24 h-full bg-gradient-to-r from-white to-transparent"></div>
-        <div className="absolute top-0 right-0 z-10 w-24 h-full bg-gradient-to-l from-white to-transparent"></div>
-
-        <div className="flex space-x-16 animate-marquee whitespace-nowrap items-center">
-          {partners.map((partner, index) => (
-            <img
-              key={index}
-              src={partner.url}
-              alt={partner.name}
-              className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 duration-300"
-              loading="lazy"
-            />
-          ))}
-        </div>
-        
-        <div className="absolute top-0 flex space-x-16 animate-marquee2 whitespace-nowrap items-center">
-           {partners.map((partner, index) => (
-            <img
-              key={`dup-${index}`}
-              src={partner.url}
-              alt={partner.name}
-              className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 duration-300"
-              loading="lazy"
-            />
-          ))}
         </div>
       </div>
 
       <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
-        }
-        @keyframes marquee2 {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(0); }
-        }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-        .animate-marquee2 {
-          animation: marquee2 40s linear infinite;
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
         }
       `}</style>
     </section>

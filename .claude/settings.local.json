@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm outdated:*)",
+      "Bash(npm update:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm run build:*)",
+      "Bash(del \"c:\\\\Users\\\\josue\\\\Downloads\\\\MobiSoins\\\\client\\\\vite.config.ts\")",
+      "Bash(del:*)",
+      "Bash(del \"c:\\\\Users\\\\josue\\\\Downloads\\\\MobiSoins\\\\client\\\\index.html\")",
+      "Bash(del \"c:\\\\Users\\\\josue\\\\Downloads\\\\MobiSoins\\\\client\\\\src\\\\main.tsx\")",
+      "Bash(del \"c:\\\\Users\\\\josue\\\\Downloads\\\\MobiSoins\\\\client\\\\src\\\\index.css\")",
+      "Bash(del \"c:\\\\Users\\\\josue\\\\Downloads\\\\MobiSoins\\\\client\\\\public\\\\_redirects\")",
+      "Bash(del \"c:\\\\Users\\\\josue\\\\Downloads\\\\MobiSoins\\\\client\\\\eslint.config.js\")",
+      "Bash(npx prisma generate)",
+      "Bash(npx create-video@latest video --yes)",
+      "Bash(npx create-video@latest video --yes --blank)",
+      "Bash(npx remotion:*)",
+      "Bash(node -e \":*)"
+    ]
+  }
+}
