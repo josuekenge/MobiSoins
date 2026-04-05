@@ -332,10 +332,61 @@ export const Hero = () => {
                       ))}
                     </div>
                   </div>
+
+                  {/* Popular services pills */}
+                  <div className="flex flex-col gap-1.5 mt-auto">
+                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider ml-0.5">Services populaires</p>
+                    <div className="flex gap-1.5 overflow-hidden">
+                      {[
+                        { icon: '💉', label: 'Vaccination' },
+                        { icon: '🩹', label: 'Pansement' },
+                        { icon: '🩺', label: 'Bilan' },
+                        { icon: '💊', label: 'Suivi' },
+                      ].map((s, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-1 px-2 py-1.5 rounded-full border flex-shrink-0"
+                          style={{ background: i === 0 ? 'linear-gradient(135deg, #003366, #004d99)' : '#fff', borderColor: i === 0 ? 'transparent' : 'rgba(0,0,0,0.06)' }}
+                        >
+                          <span className="text-[10px]">{s.icon}</span>
+                          <span className={`text-[9px] font-semibold ${i === 0 ? 'text-white' : 'text-slate-500'}`}>{s.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Tab Bar */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 z-40 flex items-end justify-around px-3 pb-7 pt-2"
+                  style={{ background: 'linear-gradient(to top, rgba(248,249,251,1) 70%, rgba(248,249,251,0))' }}
+                >
+                  {[
+                    { icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" /></svg>
+                    ), label: 'Accueil', active: true },
+                    { icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                    ), label: 'Recherche', active: false },
+                    { icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                    ), label: 'Réserver', active: false },
+                    { icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                    ), label: 'Messages', active: false },
+                    { icon: (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                    ), label: 'Profil', active: false },
+                  ].map((tab, i) => (
+                    <div key={i} className="flex flex-col items-center gap-0.5" style={{ color: tab.active ? '#003366' : '#94a3b8' }}>
+                      {tab.icon}
+                      <span className={`text-[8px] ${tab.active ? 'font-bold' : 'font-medium'}`}>{tab.label}</span>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Home indicator */}
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[124px] h-[4px] bg-slate-900/10 rounded-full z-40" />
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-slate-900/15 rounded-full z-50" />
               </div>
             </motion.div>
 
