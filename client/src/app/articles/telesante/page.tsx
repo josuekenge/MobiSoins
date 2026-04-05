@@ -12,6 +12,7 @@ const article: { FR: ArticleData; EN: ArticleData } = {
     subtitle: 'Et si consulter un professionnel de sant\u00e9 devenait aussi simple qu\u2019un appel vid\u00e9o ? La t\u00e9l\u00e9sant\u00e9 transforme aujourd\u2019hui le suivi m\u00e9dical en profondeur. Ce qui \u00e9tait autrefois une option devient maintenant une composante essentielle du syst\u00e8me de sant\u00e9 canadien.',
     readTime: '5 min',
     image: '/images/articles/telesante.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
     sections: [
       {
         title: '1. Un acc\u00e8s aux soins, sans fronti\u00e8res',
@@ -53,6 +54,7 @@ const article: { FR: ArticleData; EN: ArticleData } = {
     subtitle: 'What if consulting a healthcare professional were as simple as a video call? Telehealth is now fundamentally transforming medical monitoring. What was once an option is becoming an essential component of the Canadian healthcare system.',
     readTime: '5 min',
     image: '/images/articles/telesante.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
     sections: [
       {
         title: '1. Access to care, without borders',

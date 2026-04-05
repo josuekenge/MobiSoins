@@ -11,6 +11,7 @@ export const Blog = () => {
   const articles = [
     {
       image: '/images/articles/telesante.jpg',
+      fallback: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
       tags: [t('blog.article1Tag1'), t('blog.article1Tag2')],
       title: t('blog.article1Title'),
       description: t('blog.article1Description'),
@@ -20,6 +21,7 @@ export const Blog = () => {
     },
     {
       image: '/images/articles/premiere-visite.jpg',
+      fallback: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
       tags: [t('blog.article2Tag1'), t('blog.article2Tag2')],
       title: t('blog.article2Title'),
       description: t('blog.article2Description'),
@@ -29,6 +31,7 @@ export const Blog = () => {
     },
     {
       image: '/images/articles/soins-aines.jpg',
+      fallback: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=800&q=80',
       tags: [t('blog.article3Tag1'), t('blog.article3Tag2')],
       title: t('blog.article3Title'),
       description: t('blog.article3Description'),
@@ -90,6 +93,7 @@ export const Blog = () => {
                 alt={featured.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
+                onError={(e) => { (e.target as HTMLImageElement).src = featured.fallback; }}
               />
               {/* Gradient overlay */}
               <div
@@ -164,6 +168,7 @@ export const Blog = () => {
                       alt={article.title}
                       className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
+                      onError={(e) => { (e.target as HTMLImageElement).src = article.fallback; }}
                     />
                     {/* Subtle top-right arrow badge on hover */}
                     <div

@@ -21,6 +21,7 @@ export interface ArticleData {
   subtitle: string;
   readTime: string;
   image: string;
+  fallbackImage?: string;
   sections: ArticleSection[];
   conclusion: {
     title: string;
@@ -49,6 +50,7 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
             src={data.image}
             alt={data.title}
             className="w-full h-full object-cover"
+            onError={(e) => { if (data.fallbackImage) (e.target as HTMLImageElement).src = data.fallbackImage; }}
           />
           <div
             className="absolute inset-0"
