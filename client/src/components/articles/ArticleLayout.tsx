@@ -13,6 +13,11 @@ export interface ArticleSection {
   list?: string[];
 }
 
+export interface ArticleSource {
+  label: string;
+  url: string;
+}
+
 export interface ArticleData {
   slug: string;
   tag: string;
@@ -23,6 +28,7 @@ export interface ArticleData {
   image: string;
   fallbackImage?: string;
   sections: ArticleSection[];
+  sources?: ArticleSource[];
   conclusion: {
     title: string;
     content: string[];
@@ -126,6 +132,35 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({ article }) => {
               )}
             </section>
           ))}
+
+          {/* Sources */}
+          {data.sources && data.sources.length > 0 && (
+            <section className="mb-10">
+              <h2
+                className="text-lg font-semibold mb-4 tracking-tight"
+                style={{ color: '#1a1a24', letterSpacing: '-0.02em' }}
+              >
+                {language === 'FR' ? 'Sources' : 'Sources'}
+              </h2>
+              <ul className="space-y-2">
+                {data.sources.map((source, i) => (
+                  <li key={i}>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm underline underline-offset-2 break-all transition-colors duration-200"
+                      style={{ color: '#4e6645' }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#1a1a24'; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#4e6645'; }}
+                    >
+                      {source.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           {/* Conclusion */}
           <section className="mb-10 p-6 md:p-8 rounded-2xl" style={{ background: '#f7f9fa', border: '1px solid rgba(0,0,0,0.06)' }}>

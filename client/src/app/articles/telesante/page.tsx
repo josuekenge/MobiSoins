@@ -39,6 +39,16 @@ const article: { FR: ArticleData; EN: ArticleData } = {
         ],
       },
     ],
+    sources: [
+      {
+        label: 'T\u00e9l\u00e9sant\u00e9 Qu\u00e9bec, 2024 \u2014 Avantages et points de vigilance',
+        url: 'https://telesantequebec.ca/wp-content/uploads/fiches_informatives/02-avantage_points_vigilance_072024.pdf',
+      },
+      {
+        label: 'Institut canadien d\u2019information sur la sant\u00e9, 2022 \u2014 Soins virtuels au Canada',
+        url: 'https://www.cihi.ca/sites/default/files/document/virtual-care-in-canada-strengthening-data-information-report-fr.pdf',
+      },
+    ],
     conclusion: {
       title: 'Ce qu\u2019il faut retenir',
       content: [
@@ -79,6 +89,16 @@ const article: { FR: ArticleData; EN: ArticleData } = {
         content: [
           'Follow-up becomes more accessible, more continuous, and more patient-centered, allowing the patient to play a more active role in their health.',
         ],
+      },
+    ],
+    sources: [
+      {
+        label: 'T\u00e9l\u00e9sant\u00e9 Qu\u00e9bec, 2024 \u2014 Advantages and points of vigilance',
+        url: 'https://telesantequebec.ca/wp-content/uploads/fiches_informatives/02-avantage_points_vigilance_072024.pdf',
+      },
+      {
+        label: 'Canadian Institute for Health Information, 2022 \u2014 Virtual Care in Canada',
+        url: 'https://www.cihi.ca/sites/default/files/document/virtual-care-in-canada-strengthening-data-information-report-fr.pdf',
       },
     ],
     conclusion: {

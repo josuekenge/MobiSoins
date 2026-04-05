@@ -45,6 +45,12 @@ const article: { FR: ArticleData; EN: ArticleData } = {
         ],
       },
     ],
+    sources: [
+      {
+        label: 'Institut canadien d\u2019information sur la sant\u00e9, 2023 \u2014 A\u00een\u00e9s en transition : cheminements dans le continuum des soins',
+        url: 'https://www.cihi.ca/fr/aines-en-transition-cheminements-dans-le-continuum-des-soins',
+      },
+    ],
     conclusion: {
       title: 'Ce qu\u2019il faut retenir',
       content: [
@@ -92,6 +98,12 @@ const article: { FR: ArticleData; EN: ArticleData } = {
         content: [
           'With the rapid aging of the Canadian population, home care is becoming a strategic response to keep seniors healthier for longer in their own living environment.',
         ],
+      },
+    ],
+    sources: [
+      {
+        label: 'Canadian Institute for Health Information, 2023 \u2014 Seniors in Transition: Pathways Across the Continuum of Care',
+        url: 'https://www.cihi.ca/fr/aines-en-transition-cheminements-dans-le-continuum-des-soins',
       },
     ],
     conclusion: {

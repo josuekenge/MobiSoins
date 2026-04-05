@@ -44,6 +44,12 @@ const article: { FR: ArticleData; EN: ArticleData } = {
         ],
       },
     ],
+    sources: [
+      {
+        label: 'Ordre des infirmi\u00e8res et infirmiers du Qu\u00e9bec (OIIQ), 2024 \u2014 Champ d\u2019exercice et activit\u00e9s r\u00e9serv\u00e9es',
+        url: 'https://www.oiiq.org/pratique-professionnelle/exercice-infirmier/champ-exercice-activites-reservees',
+      },
+    ],
     conclusion: {
       title: 'Ce qu\u2019il faut retenir',
       content: [
@@ -90,6 +96,12 @@ const article: { FR: ArticleData; EN: ArticleData } = {
         content: [
           'A nurse doesn\u2019t just perform technical care. She evaluates your health condition, provides clinical monitoring, and adapts the care plan based on your progress.',
         ],
+      },
+    ],
+    sources: [
+      {
+        label: 'Ordre des infirmi\u00e8res et infirmiers du Qu\u00e9bec (OIIQ), 2024 \u2014 Scope of practice and reserved activities',
+        url: 'https://www.oiiq.org/pratique-professionnelle/exercice-infirmier/champ-exercice-activites-reservees',
       },
     ],
     conclusion: {
