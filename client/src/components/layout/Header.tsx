@@ -5,27 +5,6 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-const articles = [
-  {
-    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=70',
-    tag: 'Santé',
-    title: 'Les avantages des soins à domicile pour les aînés',
-    href: 'https://www.placessenior.com/blog/conseils-places-senior/les-avantages-des-soins-domicile',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=70',
-    tag: 'Technologie',
-    title: 'Comment la télé-santé transforme le suivi médical',
-    href: 'https://www150.statcan.gc.ca/n1/daily-quotidien/220826/dq220826a-fra.htm',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=70',
-    tag: 'Bien-être',
-    title: 'Préparer sa première visite infirmière',
-    href: 'https://www.oiiq.org/documents/20147/1456160/1478-reflexion-soutien-aines-domicile-web.pdf',
-  },
-];
-
 export const Header = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -33,6 +12,27 @@ export const Header = () => {
   const lastScrollY = useRef(0);
   const articlesRef = useRef<HTMLDivElement>(null);
   const { language, setLanguage, t } = useLanguage();
+
+  const articles = [
+    {
+      img: '/images/articles/telesante.jpg',
+      tag: t('blog.article1Tag1'),
+      title: t('blog.article1Title'),
+      href: '/articles/telesante',
+    },
+    {
+      img: '/images/articles/premiere-visite.jpg',
+      tag: t('blog.article2Tag1'),
+      title: t('blog.article2Title'),
+      href: '/articles/premiere-visite',
+    },
+    {
+      img: '/images/articles/soins-aines.jpg',
+      tag: t('blog.article3Tag1'),
+      title: t('blog.article3Title'),
+      href: '/articles/soins-aines',
+    },
+  ];
 
   useEffect(() => {
     const onScroll = () => {
@@ -149,14 +149,12 @@ export const Header = () => {
                   >
                     <div className="p-2">
                       <p className="text-[10px] font-semibold uppercase tracking-widest px-3 py-2" style={{ color: '#94a3b8' }}>
-                        Derniers articles
+                        {t('blog.title')}
                       </p>
                       {articles.map((a, i) => (
-                        <a
+                        <Link
                           key={i}
                           href={a.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           onClick={() => setArticlesOpen(false)}
                           className="group flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-slate-50"
                         >
@@ -170,7 +168,7 @@ export const Header = () => {
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="shrink-0 opacity-0 group-hover:opacity-40 transition-opacity" style={{ color: '#1a1a24' }}>
                             <path d="M7 17L17 7M17 7H7M17 7v10" />
                           </svg>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </motion.div>
@@ -266,11 +264,9 @@ export const Header = () => {
                 <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#94a3b8' }}>Articles</p>
                 <div className="flex flex-col gap-1">
                   {articles.map((a, i) => (
-                    <a
+                    <Link
                       key={i}
                       href={a.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="flex items-center gap-2.5 py-2"
                       onClick={() => setIsMobileOpen(false)}
                     >
@@ -278,7 +274,7 @@ export const Header = () => {
                         <img src={a.img} alt={a.title} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <p className="text-xs font-medium line-clamp-1" style={{ color: '#1a1a24' }}>{a.title}</p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
