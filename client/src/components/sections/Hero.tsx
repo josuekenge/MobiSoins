@@ -222,11 +222,11 @@ export const Hero = () => {
                 </div>
 
                 {/* App content */}
-                <div className="flex-1 px-4 pt-2 pb-10 flex flex-col gap-2.5 overflow-hidden bg-gradient-to-b from-[#f8f9fb] via-[#f3f6fa] to-[#edf1f7]">
-                  <div className="flex items-center justify-between mb-0.5 ml-0.5">
+                <div className="flex-1 px-3.5 pt-1 pb-[72px] flex flex-col gap-2 overflow-hidden bg-gradient-to-b from-[#f8f9fb] via-[#f3f6fa] to-[#edf1f7]">
+                  <div className="flex items-center justify-between ml-0.5">
                     <div>
-                      <h2 className="text-[20px] font-bold text-slate-800 tracking-tight leading-none">MobiSoins</h2>
-                      <p className="text-[10px] text-slate-400 font-medium mt-1 flex items-center gap-1">
+                      <h2 className="text-[18px] font-bold text-slate-800 tracking-tight leading-none">MobiSoins</h2>
+                      <p className="text-[9px] text-slate-400 font-medium mt-0.5 flex items-center gap-1">
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ boxShadow: '0 0 4px rgba(52,211,153,0.5)' }} />
                         En ligne
                       </p>
@@ -240,10 +240,10 @@ export const Hero = () => {
                   <div className="flex gap-2">
                     {/* Availability ring */}
                     <div
-                      className="flex-1 rounded-2xl p-3.5 flex items-center gap-3 border"
+                      className="flex-1 rounded-xl p-2.5 flex items-center gap-2.5 border"
                       style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%)', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
                     >
-                      <div className="relative w-[44px] h-[44px] flex-shrink-0">
+                      <div className="relative w-[38px] h-[38px] flex-shrink-0">
                         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
                           <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" strokeWidth="7" />
                           <circle cx="50" cy="50" r="40" fill="none" strokeWidth="7" strokeDasharray="251" strokeDashoffset="12" strokeLinecap="round" style={{ stroke: 'url(#ringGrad)' }} />
@@ -252,14 +252,14 @@ export const Hero = () => {
                         <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-slate-700">95%</span>
                       </div>
                       <div>
-                        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Dispo</p>
-                        <p className="text-lg font-bold text-slate-800 leading-none mt-0.5 tracking-tight">24/7</p>
+                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">Dispo</p>
+                        <p className="text-base font-bold text-slate-800 leading-none mt-0.5 tracking-tight">24/7</p>
                       </div>
                     </div>
 
                     {/* Next appointment mini */}
                     <div
-                      className="w-[105px] rounded-2xl p-3 flex flex-col justify-between border"
+                      className="w-[100px] rounded-xl p-2.5 flex flex-col justify-between border"
                       style={{ background: 'linear-gradient(135deg, #003366, #004d99)', borderColor: 'transparent' }}
                     >
                       <p className="text-[8px] font-semibold text-white/60 uppercase tracking-wider">Prochain</p>
@@ -272,10 +272,10 @@ export const Hero = () => {
 
                   {/* Activity sparkline */}
                   <div
-                    className="rounded-2xl p-3.5 border relative overflow-hidden"
+                    className="rounded-xl p-3 border relative overflow-hidden"
                     style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
                   >
-                    <div className="flex justify-between items-center mb-3">
+                    <div className="flex justify-between items-center mb-2">
                       <div className="flex items-center gap-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" style={{ boxShadow: '0 0 6px rgba(52,211,153,0.5)' }} />
                         <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">Soins cette semaine</span>
@@ -283,7 +283,7 @@ export const Hero = () => {
                       <span className="text-[10px] font-bold text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-full">+18%</span>
                     </div>
                     {/* Smooth area chart */}
-                    <svg viewBox="0 0 260 70" className="w-full" style={{ height: '80px' }}>
+                    <svg viewBox="0 0 260 70" className="w-full" style={{ height: '58px' }}>
                       <defs>
                         <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
                           <stop offset="0%" stopColor="#003366" stopOpacity="0.15" />
@@ -311,12 +311,12 @@ export const Hero = () => {
 
                   {/* Nurse matching row */}
                   <div
-                    className="rounded-2xl p-3.5 border flex items-center justify-between"
+                    className="rounded-xl p-2.5 border flex items-center justify-between"
                     style={{ background: 'linear-gradient(135deg, #faf5ff 0%, #f0f4ff 100%)', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
                   >
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #7c3aed, #a78bfa)' }}>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+                      <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #7c3aed, #a78bfa)' }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
                       </div>
                       <div>
                         <h4 className="text-[11px] font-bold text-slate-700 tracking-tight">Matching IA</h4>
@@ -324,9 +324,9 @@ export const Hero = () => {
                       </div>
                     </div>
                     {/* Nurse avatars stack */}
-                    <div className="flex -space-x-2">
+                    <div className="flex -space-x-1.5">
                       {['#f472b6', '#60a5fa', '#34d399'].map((color, i) => (
-                        <div key={i} className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-bold text-white" style={{ background: color, zIndex: 3 - i }}>
+                        <div key={i} className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-[8px] font-bold text-white" style={{ background: color, zIndex: 3 - i }}>
                           {['SB', 'ML', 'JR'][i]}
                         </div>
                       ))}
@@ -334,9 +334,9 @@ export const Hero = () => {
                   </div>
 
                   {/* Popular services pills */}
-                  <div className="flex flex-col gap-1.5 mt-auto">
-                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider ml-0.5">Services populaires</p>
-                    <div className="flex gap-1.5 overflow-hidden">
+                  <div className="flex flex-col gap-1 mt-auto">
+                    <p className="text-[8px] font-bold text-slate-400 uppercase tracking-wider ml-0.5">Services populaires</p>
+                    <div className="flex gap-1 overflow-hidden">
                       {[
                         { icon: '💉', label: 'Vaccination' },
                         { icon: '🩹', label: 'Pansement' },
@@ -345,11 +345,11 @@ export const Hero = () => {
                       ].map((s, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-1 px-2 py-1.5 rounded-full border flex-shrink-0"
+                          className="flex items-center gap-0.5 px-1.5 py-1 rounded-full border flex-shrink-0"
                           style={{ background: i === 0 ? 'linear-gradient(135deg, #003366, #004d99)' : '#fff', borderColor: i === 0 ? 'transparent' : 'rgba(0,0,0,0.06)' }}
                         >
-                          <span className="text-[10px]">{s.icon}</span>
-                          <span className={`text-[9px] font-semibold ${i === 0 ? 'text-white' : 'text-slate-500'}`}>{s.label}</span>
+                          <span className="text-[9px]">{s.icon}</span>
+                          <span className={`text-[8px] font-semibold ${i === 0 ? 'text-white' : 'text-slate-500'}`}>{s.label}</span>
                         </div>
                       ))}
                     </div>
@@ -358,24 +358,24 @@ export const Hero = () => {
 
                 {/* Bottom Tab Bar */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 z-40 flex items-end justify-around px-3 pb-7 pt-2"
-                  style={{ background: 'linear-gradient(to top, rgba(248,249,251,1) 70%, rgba(248,249,251,0))' }}
+                  className="absolute bottom-0 left-0 right-0 z-40 flex items-end justify-around px-4 pb-6 pt-3"
+                  style={{ background: 'linear-gradient(to top, rgba(237,241,247,1) 60%, rgba(237,241,247,0.95) 80%, rgba(243,246,250,0))' }}
                 >
                   {[
                     { icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" /></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" /></svg>
                     ), label: 'Accueil', active: true },
                     { icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
                     ), label: 'Recherche', active: false },
                     { icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
                     ), label: 'Réserver', active: false },
                     { icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                     ), label: 'Messages', active: false },
                     { icon: (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
                     ), label: 'Profil', active: false },
                   ].map((tab, i) => (
                     <div key={i} className="flex flex-col items-center gap-0.5" style={{ color: tab.active ? '#003366' : '#94a3b8' }}>
@@ -386,7 +386,7 @@ export const Hero = () => {
                 </div>
 
                 {/* Home indicator */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-slate-900/15 rounded-full z-50" />
+                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[100px] h-[3px] bg-slate-900/15 rounded-full z-50" />
               </div>
             </motion.div>
 
