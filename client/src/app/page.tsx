@@ -46,6 +46,10 @@ const Pillars = dynamic(
   () => import('../components/sections/Pillars').then((m) => ({ default: m.Pillars })),
   { loading: () => <SectionLoader /> }
 );
+const Blog = dynamic(
+  () => import('../components/sections/Blog').then((m) => ({ default: m.Blog })),
+  { loading: () => <SectionLoader /> }
+);
 const Contact = dynamic(
   () => import('../components/sections/Contact').then((m) => ({ default: m.Contact })),
   { loading: () => <SectionLoader /> }
@@ -69,6 +73,7 @@ export default function Home() {
         <Services />
         <Trust />
         <Pillars />
+        <Blog />
         <FAQ />
         <Contact />
         <Newsletter />
