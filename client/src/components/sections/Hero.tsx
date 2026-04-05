@@ -222,88 +222,114 @@ export const Hero = () => {
                 </div>
 
                 {/* App content */}
-                <div className="flex-1 px-4 pt-2 pb-10 flex flex-col gap-3 overflow-hidden bg-gradient-to-br from-[#f8f9fb] to-[#e2e8f0]/30">
-                  <div className="flex flex-col mb-1 ml-1">
-                    <h2 className="text-[22px] font-semibold text-slate-800 tracking-tight leading-none">MobiSoins</h2>
-                    <p className="text-xs text-slate-500 font-medium mt-1">Infirmière disponible ✓</p>
+                <div className="flex-1 px-4 pt-2 pb-10 flex flex-col gap-2.5 overflow-hidden bg-gradient-to-b from-[#f8f9fb] via-[#f3f6fa] to-[#edf1f7]">
+                  <div className="flex items-center justify-between mb-0.5 ml-0.5">
+                    <div>
+                      <h2 className="text-[20px] font-bold text-slate-800 tracking-tight leading-none">MobiSoins</h2>
+                      <p className="text-[10px] text-slate-400 font-medium mt-1 flex items-center gap-1">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ boxShadow: '0 0 4px rgba(52,211,153,0.5)' }} />
+                        En ligne
+                      </p>
+                    </div>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #003366, #004d99)' }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                    </div>
                   </div>
 
-                  {/* Disponibilité card */}
-                  <div
-                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex items-center justify-between border border-black/10 transition-all duration-500 hover:-translate-y-1"
-                    style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
-                  >
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">Disponibilité</span>
-                      <span className="text-3xl font-semibold text-slate-800 tracking-tight mt-1">
-                        24/7<span className="text-base text-slate-400 font-medium ml-1">h</span>
-                      </span>
-                    </div>
-                    <div className="relative w-[60px] h-[60px] rounded-full flex items-center justify-center">
-                      <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="#f1f5f9" strokeWidth="8" />
-                        <circle cx="50" cy="50" r="42" fill="none" stroke="#3b82f6" strokeWidth="8" strokeDasharray="264" strokeDashoffset="0" strokeLinecap="round" />
-                      </svg>
-                      <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center border border-blue-100/50 text-blue-500">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  {/* Status + next appointment row */}
+                  <div className="flex gap-2">
+                    {/* Availability ring */}
+                    <div
+                      className="flex-1 rounded-2xl p-3.5 flex items-center gap-3 border"
+                      style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%)', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
+                    >
+                      <div className="relative w-[44px] h-[44px] flex-shrink-0">
+                        <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                          <circle cx="50" cy="50" r="40" fill="none" stroke="#e2e8f0" strokeWidth="7" />
+                          <circle cx="50" cy="50" r="40" fill="none" strokeWidth="7" strokeDasharray="251" strokeDashoffset="12" strokeLinecap="round" style={{ stroke: 'url(#ringGrad)' }} />
+                          <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#003366" /><stop offset="100%" stopColor="#3b82f6" /></linearGradient></defs>
                         </svg>
+                        <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-slate-700">95%</span>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Dispo</p>
+                        <p className="text-lg font-bold text-slate-800 leading-none mt-0.5 tracking-tight">24/7</p>
+                      </div>
+                    </div>
+
+                    {/* Next appointment mini */}
+                    <div
+                      className="w-[105px] rounded-2xl p-3 flex flex-col justify-between border"
+                      style={{ background: 'linear-gradient(135deg, #003366, #004d99)', borderColor: 'transparent' }}
+                    >
+                      <p className="text-[8px] font-semibold text-white/60 uppercase tracking-wider">Prochain</p>
+                      <div>
+                        <p className="text-[11px] font-bold text-white leading-tight">14:00</p>
+                        <p className="text-[9px] text-blue-200 font-medium mt-0.5">Inf. Sarah B.</p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Soins actifs chart */}
+                  {/* Activity sparkline */}
                   <div
-                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 flex flex-col border border-black/10 h-[168px] relative overflow-hidden"
-                    style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
+                    className="rounded-2xl p-3.5 border relative overflow-hidden"
+                    style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
                   >
-                    <div className="flex justify-between items-center mb-2 z-10">
+                    <div className="flex justify-between items-center mb-3">
                       <div className="flex items-center gap-1.5">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
-                          style={{ boxShadow: '0 0 5px rgba(16,185,129,0.4)' }}
-                        />
-                        <span className="text-[10px] font-semibold text-slate-400 tracking-widest uppercase">Soins actifs</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" style={{ boxShadow: '0 0 6px rgba(52,211,153,0.5)' }} />
+                        <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase">Soins cette semaine</span>
                       </div>
-                      <div className="text-sm font-semibold text-slate-800">
-                        12<span className="text-slate-400 font-normal text-[10px] ml-0.5">min</span>
-                      </div>
+                      <span className="text-[10px] font-bold text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-full">+18%</span>
                     </div>
-                    <div className="flex-1 flex items-end gap-[3px] z-10 w-full pt-2">
-                      {[30, 45, 35, 55, 40, 75, 100, 65, 45, 30, 50, 35].map((h, i) => (
-                        <div
-                          key={i}
-                          className={`flex-1 rounded-t-[2px] relative ${i === 6 ? 'bg-emerald-500/60' : 'bg-blue-200/60'}`}
-                          style={{ height: `${h}%` }}
-                        >
-                          {i === 6 && (
-                            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-emerald-500 border border-black/12" />
-                          )}
-                        </div>
+                    {/* Smooth area chart */}
+                    <svg viewBox="0 0 260 70" className="w-full" style={{ height: '80px' }}>
+                      <defs>
+                        <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#003366" stopOpacity="0.15" />
+                          <stop offset="100%" stopColor="#003366" stopOpacity="0.01" />
+                        </linearGradient>
+                        <linearGradient id="lineStroke" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stopColor="#003366" />
+                          <stop offset="50%" stopColor="#3b82f6" />
+                          <stop offset="100%" stopColor="#003366" />
+                        </linearGradient>
+                      </defs>
+                      <path d="M0 55 Q15 50 30 48 T60 42 T90 38 T120 30 T150 22 T180 18 T210 24 T240 20 T260 16" fill="none" stroke="url(#lineStroke)" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M0 55 Q15 50 30 48 T60 42 T90 38 T120 30 T150 22 T180 18 T210 24 T240 20 T260 16 L260 70 L0 70 Z" fill="url(#areaFill)" />
+                      {/* Data point */}
+                      <circle cx="210" cy="24" r="4" fill="#003366" />
+                      <circle cx="210" cy="24" r="7" fill="none" stroke="#003366" strokeWidth="1.5" opacity="0.3" />
+                    </svg>
+                    {/* Bottom labels */}
+                    <div className="flex justify-between mt-1 px-1">
+                      {['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'].map((d) => (
+                        <span key={d} className="text-[8px] text-slate-300 font-medium">{d}</span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Matching IA */}
+                  {/* Nurse matching row */}
                   <div
-                    className="bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-black/10 flex flex-col justify-between relative overflow-hidden min-h-[80px] flex-1"
-                    style={{ boxShadow: '0 4px 12px rgba(15,23,42,0.03), inset 0 1px 2px rgba(255,255,255,1)' }}
+                    className="rounded-2xl p-3.5 border flex items-center justify-between"
+                    style={{ background: 'linear-gradient(135deg, #faf5ff 0%, #f0f4ff 100%)', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
                   >
-                    <div className="flex items-center justify-between z-10">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-purple-50/80 flex items-center justify-center border border-purple-100/50">
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="text-purple-500">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h4 className="text-xs font-semibold text-slate-800 tracking-tight">Matching IA</h4>
-                          <p className="text-[10px] text-purple-500 font-medium mt-0.5">Actif • 3 infirmières</p>
-                        </div>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #7c3aed, #a78bfa)' }}>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
                       </div>
-                      <div className="w-8 h-4 bg-purple-500 rounded-full relative">
-                        <div className="absolute right-[2px] top-[2px] w-3 h-3 bg-white rounded-full shadow-sm" />
+                      <div>
+                        <h4 className="text-[11px] font-bold text-slate-700 tracking-tight">Matching IA</h4>
+                        <p className="text-[9px] text-purple-500 font-medium mt-0.5">3 infirmières trouvées</p>
                       </div>
+                    </div>
+                    {/* Nurse avatars stack */}
+                    <div className="flex -space-x-2">
+                      {['#f472b6', '#60a5fa', '#34d399'].map((color, i) => (
+                        <div key={i} className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-bold text-white" style={{ background: color, zIndex: 3 - i }}>
+                          {['SB', 'ML', 'JR'][i]}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -318,31 +344,65 @@ export const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
-              className="hidden xl:flex absolute right-0 top-[20%] flex-col gap-2 w-48"
+              className="hidden xl:flex absolute right-0 top-[14%] flex-col gap-3 w-52"
               style={{ animation: 'float 7s ease-in-out infinite 0.8s' }}
             >
-              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-black/10">
+              {/* Live stats card */}
+              <div
+                className="backdrop-blur-xl rounded-2xl p-4 border"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,244,255,0.9))', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 8px 32px rgba(0,51,102,0.08), 0 1px 2px rgba(0,0,0,0.04)' }}
+              >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center text-blue-500">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #003366, #004d99)' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-lg font-semibold text-slate-800 leading-none">500+</div>
-                    <div className="text-[10px] text-slate-500 font-medium mt-1">Infirmières OIIQ</div>
+                    <div className="text-xl font-bold text-slate-800 leading-none tracking-tight">500+</div>
+                    <div className="text-[10px] text-slate-400 font-medium mt-1">Infirmières OIIQ</div>
+                  </div>
+                </div>
+                {/* Mini sparkline */}
+                <svg viewBox="0 0 160 24" className="w-full mt-3" style={{ height: '20px' }}>
+                  <path d="M0 18 Q20 14 40 16 T80 10 T120 8 T160 4" fill="none" stroke="#003366" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+                  <circle cx="160" cy="4" r="2.5" fill="#003366" opacity="0.5" />
+                </svg>
+              </div>
+
+              {/* Next appointment card */}
+              <div
+                className="backdrop-blur-xl rounded-2xl p-4 border"
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(250,245,255,0.9))', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 8px 32px rgba(0,51,102,0.08), 0 1px 2px rgba(0,0,0,0.04)' }}
+              >
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Prochain soin</span>
+                  <span className="text-[8px] font-bold text-emerald-500 bg-emerald-50 px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+                    <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                    En route
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5 p-2.5 rounded-xl" style={{ background: 'rgba(0,0,0,0.03)' }}>
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0" style={{ background: 'linear-gradient(135deg, #f472b6, #ec4899)' }}>
+                    SB
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs font-bold text-slate-700 truncate">Inf. Sarah B.</div>
+                    <div className="text-[10px] font-medium mt-0.5" style={{ color: '#003366' }}>14:00 — Pansement</div>
                   </div>
                 </div>
               </div>
-              <div className="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-black/10">
-                <div className="text-[10px] font-semibold text-slate-400 mb-2 uppercase tracking-wide">Prochain soin</div>
-                <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-xl border border-black/8">
-                  <div className="text-xl">👩‍⚕️</div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-800">Inf. Sarah</div>
-                    <div className="text-[10px] text-blue-500 font-medium">14:00 - 15:00</div>
-                  </div>
+
+              {/* Satisfaction pill */}
+              <div
+                className="backdrop-blur-xl rounded-full py-2.5 px-4 border flex items-center justify-between"
+                style={{ background: 'rgba(255,255,255,0.92)', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 4px 16px rgba(0,51,102,0.06)' }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-sm">⭐</span>
+                  <span className="text-xs font-bold text-slate-700">4.9/5</span>
                 </div>
+                <span className="text-[9px] text-slate-400 font-medium">Satisfaction</span>
               </div>
             </motion.div>
           </div>
