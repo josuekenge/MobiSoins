@@ -333,8 +333,34 @@ export const Hero = () => {
                     </div>
                   </div>
 
+                  {/* Recent activity feed */}
+                  <div
+                    className="rounded-xl p-3 border flex-1 flex flex-col gap-0"
+                    style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.06)', boxShadow: '0 2px 8px rgba(15,23,42,0.03)' }}
+                  >
+                    <p className="text-[8px] font-bold text-slate-400 uppercase tracking-wider mb-2">Activité récente</p>
+                    {[
+                      { icon: '✅', text: 'Soin complété', detail: 'Prise de sang — 12h30', color: '#10b981' },
+                      { icon: '💬', text: 'Nouveau message', detail: 'Inf. Sarah B.', color: '#3b82f6' },
+                      { icon: '📅', text: 'RDV confirmé', detail: 'Demain, 14:00', color: '#8b5cf6' },
+                    ].map((item, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 py-1.5"
+                        style={{ borderTop: i > 0 ? '1px solid rgba(0,0,0,0.04)' : 'none' }}
+                      >
+                        <span className="text-[10px]">{item.icon}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[10px] font-semibold text-slate-700 leading-tight">{item.text}</p>
+                          <p className="text-[8px] text-slate-400 font-medium">{item.detail}</p>
+                        </div>
+                        <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: item.color }} />
+                      </div>
+                    ))}
+                  </div>
+
                   {/* Popular services pills */}
-                  <div className="flex flex-col gap-1 mt-auto">
+                  <div className="flex flex-col gap-1">
                     <p className="text-[8px] font-bold text-slate-400 uppercase tracking-wider ml-0.5">Services populaires</p>
                     <div className="flex gap-1 overflow-hidden">
                       {[
