@@ -477,7 +477,7 @@ const translations = {
       mainTitle: 'Your health deserves',
       mainTitlePrefix: 'complete',
       mainTitleHighlight: 'services',
-      mainTitleSuffix: '',
+      mainTitleSuffix: ' ',
       card1Visual: 'Dashboard',
       card1Item1: 'Next Appt',
       card1Item1Detail: 'Tomorrow, 2:00 PM',
