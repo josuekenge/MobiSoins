@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, FileText } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { z } from 'zod';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { PlayStoreButton } from '../ui/play-store-button';
@@ -96,16 +96,6 @@ export const Hero = () => {
                 <span className="absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent skew-x-[-20deg] group-hover:left-[150%] transition-all duration-500" />
                 <Calendar className="w-4 h-4" />
                 {t('hero.bookNow')}
-              </a>
-              <a
-                href="/Healthcare_Access_On_Demand.pdf#zoom=40"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-4 rounded-full font-medium text-slate-700 bg-white/40 border border-black/12 backdrop-blur-xl hover:bg-white/60 transition-all duration-300"
-                style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.9)' }}
-              >
-                <FileText className="w-4 h-4" />
-                {t('hero.pitchDeck')}
               </a>
             </motion.div>
 
