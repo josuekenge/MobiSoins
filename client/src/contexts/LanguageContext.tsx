@@ -182,7 +182,7 @@ const translations = {
     services: {
       badge: 'Nos Avantages',
       mainTitle: 'Votre santé mérite',
-      mainTitlePrefix: 'ces',
+      mainTitlePrefix: 'des',
       mainTitleHighlight: 'services',
       mainTitleSuffix: 'complets',
       card1Visual: 'Tableau de Bord',
