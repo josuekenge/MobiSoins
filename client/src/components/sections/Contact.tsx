@@ -52,7 +52,7 @@ export const Contact = () => {
   const contactDetails = [
     { labelKey: 'contact.phone', value: '+1 (514) 000-0000', href: 'tel:+15140000000' },
     { labelKey: 'contact.email', value: 'info@mobisoins.ca', href: 'mailto:info@mobisoins.ca' },
-    { labelKey: 'contact.web', value: 'mobisoins.ca', href: 'https://mobisoins.ca', external: true },
+    { labelKey: 'contact.web', value: 'mobisoins.com', href: 'https://mobisoins.com', external: true },
   ];
 
   return (

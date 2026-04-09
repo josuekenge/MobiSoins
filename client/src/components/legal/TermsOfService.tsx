@@ -2,7 +2,7 @@ import { LegalLayout } from './LegalLayout';
 
 export const TermsOfService = () => {
   return (
-    <LegalLayout title="Conditions Générales d'Utilisation" lastUpdated="28 Novembre 2025">
+    <LegalLayout title="Conditions Générales d'Utilisation" lastUpdated="8 Avril 2026">
       <section className="mb-8">
         <h2 className="text-2xl font-bold text-navy-900 mb-4">1. Acceptation des Conditions</h2>
         <p className="mb-4">
