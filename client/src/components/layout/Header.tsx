@@ -70,11 +70,6 @@ export const Header = () => {
     { name: t('header.services'), href: '#services' },
     { name: t('header.faq'), href: '#faq' },
     {
-      name: 'Pitch Deck',
-      href: '/Healthcare_Access_On_Demand.pdf#zoom=40',
-      external: true,
-    },
-    {
       name: t('header.recruitment'),
       href: 'https://docs.google.com/forms/d/e/1FAIpQLSd_4xRpjxg-Yml0oJYwec5elHmVFI80Qfibk9HYGZMMnCREBg/viewform',
       external: true,
