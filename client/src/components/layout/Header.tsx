@@ -65,6 +65,7 @@ export const Header = () => {
   }, []);
 
   const navLinks = [
+    { name: t('header.about'), href: '/apropos' },
     { name: t('header.howItWorks'), href: '#how-it-works' },
     { name: t('header.features'), href: '#features' },
     { name: t('header.services'), href: '#services' },

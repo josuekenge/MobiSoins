@@ -33,7 +33,7 @@ const footerSections = [
   {
     label: 'Entreprise',
     links: [
-      { title: 'À propos', href: '#' },
+      { title: 'À propos', href: '/apropos' },
       { title: 'FAQ', href: '#faq' },
       { title: 'Carrières', href: '#' },
       { title: 'Presse', href: '#' },
