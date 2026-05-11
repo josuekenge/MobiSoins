@@ -18,7 +18,20 @@
       "Bash(npx remotion:*)",
       "Bash(node -e \":*)",
       "Bash(npx next:*)",
-      "Bash(./node_modules/.bin/next build:*)"
+      "Bash(./node_modules/.bin/next build:*)",
+      "Bash(git status:*)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(curl -s -o /tmp/page.html -w \"HTTP %{http_code} | size: %{size_download}\\\\n\" http://localhost:3000/template-preview)",
+      "Bash(curl -s -o /tmp/page2.html -w \"HTTP %{http_code} | size: %{size_download}\\\\n\" http://localhost:3000/template-preview)",
+      "Bash(grep -n \"REP-\\\\${\\\\|DISP-\\\\${\\\\|<article\\\\|<div\" client/src/app/template-preview/page.tsx)",
+      "Bash(curl -s -o /tmp/page4.html -w \"HTTP %{http_code} | size: %{size_download}\\\\n\" http://localhost:3000/template-preview)",
+      "Bash(curl -s -o /tmp/page5.html -w \"HTTP %{http_code} | size: %{size_download}\\\\n\" http://localhost:3000/template-preview)",
+      "Bash(curl -s -o /tmp/page6.html -w \"HTTP %{http_code} | size: %{size_download}\\\\n\" http://localhost:3000/template-preview)",
+      "Bash(awk 'NR>=576 && NR<=700 {print NR\": \"$0}' client/src/app/template-preview/page.tsx)",
+      "Bash(curl -s -o /tmp/page7.html -w \"HTTP %{http_code} | size: %{size_download}\\\\n\" http://localhost:3000/template-preview)"
     ]
   }
 }
